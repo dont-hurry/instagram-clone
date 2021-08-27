@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 import { doesUsernameExist, handleSignUp } from "../services/firebase";
 
@@ -9,6 +9,8 @@ import Button from "../components/ui/Button";
 import styles from "./base.module.css";
 
 export default function SignUp() {
+  const history = useHistory();
+
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [username, setUsername] = useState("");
@@ -34,12 +36,18 @@ export default function SignUp() {
         setErrorMessage("A user with that username already exists.");
       } else {
         await handleSignUp({ email, fullName, username, password });
+        history.push("/");
       }
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        setErrorMessage(`Another account is using ${email}.`);
-      } else {
-        setErrorMessage("Unknown error.");
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          setErrorMessage(`Another account is using ${email}.`);
+          break;
+        case "auth/invalid-email":
+          setErrorMessage("Enter a valid email address.");
+          break;
+        default:
+          setErrorMessage("Unknown error.");
       }
     }
 
