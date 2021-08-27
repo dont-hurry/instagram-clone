@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import BorderedWrapper from "../components/ui/BorderedWrapper";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
-import styles from "./sign-up.module.css";
+import styles from "./base.module.css";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
