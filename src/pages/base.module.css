@@ -16,3 +16,8 @@
 .textSmall {
   font-size: 14px;
 }
+
+.link {
+  color: rgb(0, 150, 245);
+  text-decoration: none;
+}

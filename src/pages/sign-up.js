@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import * as ROUTES from "../constants/routes";
 import BorderedWrapper from "../components/ui/BorderedWrapper";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
@@ -60,7 +62,12 @@ export default function SignUp() {
         </BorderedWrapper>
 
         <BorderedWrapper>
-          <span className={styles.textSmall}>Have an account? Log in</span>
+          <span className={styles.textSmall}>
+            Have an account?{" "}
+            <Link to={ROUTES.LOG_IN} className={styles.link}>
+              Log in
+            </Link>
+          </span>
         </BorderedWrapper>
       </div>
     </div>
