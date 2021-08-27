@@ -21,3 +21,8 @@
   color: rgb(0, 150, 245);
   text-decoration: none;
 }
+
+.errorMessage {
+  color: rgb(240, 75, 85);
+  font-size: 14px;
+}
