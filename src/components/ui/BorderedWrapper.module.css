@@ -1,0 +1,18 @@
+.borderedWrapper {
+  background: #fff;
+  border: 1px solid rgb(220, 220, 220);
+  padding: 25px;
+  text-align: center;
+}
+
+.borderedWrapper h2 {
+  color: rgb(140, 140, 140);
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.borderedWrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
