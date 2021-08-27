@@ -1,21 +1,56 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
+import { handleLogIn } from "../services/firebase";
+
 import BorderedWrapper from "../components/ui/BorderedWrapper";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import styles from "./base.module.css";
 
 export default function LogIn() {
-  const [username, setUsername] = useState("");
+  const history = useHistory();
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const isFormValid = username && password.length >= 6;
+  const [errorMessage, setErrorMessage] = useState(null);
+  // Controls the submit button
+  const [waitingForResponse, setWaitingForResponse] = useState(false);
+
+  const isFormValid = email && password.length >= 6;
 
   useEffect(() => (document.title = "Login - Instagram"), []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    setWaitingForResponse(true);
+
+    try {
+      await handleLogIn({ email, password });
+      history.push("/");
+    } catch (error) {
+      switch (error.code) {
+        case "auth/invalid-email":
+          setErrorMessage("Enter a valid email address.");
+          break;
+        case "auth/user-not-found":
+          setErrorMessage(
+            "The username you entered doesn't belong to an account. Please check your username and try again."
+          );
+          break;
+        case "auth/wrong-password":
+          setErrorMessage(
+            "Sorry, your password was incorrect. Please double-check your password."
+          );
+          break;
+        default:
+          setErrorMessage("Unknown error.");
+      }
+    }
+
+    setWaitingForResponse(false);
   };
 
   return (
@@ -27,20 +62,31 @@ export default function LogIn() {
           </h1>
           <form onSubmit={handleSubmit}>
             <Input
-              aria-label="Username"
-              onChange={(event) => setUsername(event.target.value)}
-              placeholder="Username"
+              aria-label="Email"
+              onChange={(event) => {
+                setEmail(event.target.value);
+                setErrorMessage(null);
+              }}
+              placeholder="Email"
               type="text"
-              value={username}
+              value={email}
             />
             <Input
               aria-label="Password"
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={(event) => {
+                setPassword(event.target.value);
+                setErrorMessage(null);
+              }}
               placeholder="Password"
               type="password"
               value={password}
             />
-            <Button disabled={!isFormValid}>Log in</Button>
+            <Button disabled={waitingForResponse || !isFormValid}>
+              Log in
+            </Button>
+            {errorMessage && (
+              <div className={styles.errorMessage}>{errorMessage}</div>
+            )}
           </form>
         </BorderedWrapper>
 

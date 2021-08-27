@@ -25,4 +25,5 @@
 .errorMessage {
   color: rgb(240, 75, 85);
   font-size: 14px;
+  line-height: 18px;
 }

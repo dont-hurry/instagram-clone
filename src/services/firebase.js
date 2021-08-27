@@ -1,18 +1,15 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {
-  getFirestore,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import {
   addDoc,
   collection,
   getDocs,
   query,
   where,
 } from "firebase/firestore/lite";
-import config from "./firebase-config"; // This file is not uploaded to GitHub
-
-initializeApp(config);
-const auth = getAuth();
-const db = getFirestore();
+import { auth, db } from "../lib/firebase";
 
 export async function doesUsernameExist(username) {
   const q = query(collection(db, "users"), where("username", "==", username));
@@ -40,4 +37,8 @@ export async function handleSignUp({ email, fullName, username, password }) {
     followers: [],
     following: [],
   });
+}
+
+export async function handleLogIn({ email, password }) {
+  await signInWithEmailAndPassword(auth, email, password);
 }
