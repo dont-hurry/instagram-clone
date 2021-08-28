@@ -1,0 +1,7 @@
+.twoColumns {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 615px 290px;
+  margin: 0 auto;
+  width: 935px;
+}

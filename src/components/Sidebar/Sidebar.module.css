@@ -1,0 +1,30 @@
+.container {
+  position: fixed;
+  top: 90px;
+}
+
+.userBlock {
+  align-items: center;
+  display: flex;
+  font-size: 14px;
+  gap: 15px;
+  width: 290px;
+}
+
+.userBlock a {
+  color: rgb(40, 40, 40);
+  font-weight: 600;
+}
+
+.suggestionText {
+  color: rgb(140, 140, 140);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 15px 0;
+}
+
+.userAvatar {
+  border-radius: 50%;
+  height: 55px;
+  width: 55px;
+}

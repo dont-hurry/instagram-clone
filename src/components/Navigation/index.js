@@ -1,26 +1,9 @@
-import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import UserContext from "../../context/user";
-import { getUserInfoByUid } from "../../services/firebase";
 import styles from "./Navigation.module.css";
 import HomeSvg from "../svgs/Home";
 import Menu from "./Menu";
 
-export default function Navigation({ isNavMenuActive }) {
-  const { uid } = useContext(UserContext);
-
-  const [userInfo, setUserInfo] = useState({});
-  const { username } = userInfo;
-
-  useEffect(() => {
-    const getUserInfo = async () => {
-      const userInfo = await getUserInfoByUid(uid);
-      setUserInfo(userInfo);
-    };
-
-    getUserInfo();
-  }, [uid]);
-
+export default function Navigation({ isNavMenuActive, username }) {
   return (
     <nav className={styles.outerContainer}>
       <div className={styles.innerContainer}>
