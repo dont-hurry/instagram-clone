@@ -65,6 +65,13 @@
   width: 230px;
 }
 
+.menu hr {
+  background: rgb(220, 220, 220);
+  border: 0;
+  height: 1px;
+  margin: 0;
+}
+
 .menuItem {
   align-items: center;
   color: rgb(40, 40, 40);
