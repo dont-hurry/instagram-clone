@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../context/user";
 import { getUserInfoByUid } from "../../services/firebase";
-import styles from "./base.module.css";
+import styles from "./Navigation.module.css";
 import HomeSvg from "../svgs/Home";
 import Menu from "./Menu";
 
@@ -46,7 +46,7 @@ export default function Navigation({ isNavMenuActive }) {
               }}
             />
           </div>
-          {isNavMenuActive && <Menu />}
+          {isNavMenuActive && <Menu username={username} />}
         </div>
       </div>
     </nav>
