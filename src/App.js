@@ -3,7 +3,7 @@ import useAuthStateObserver from "./hooks/use-auth-state-observer";
 import UserContext from "./context/user";
 
 import * as ROUTES from "./constants/routes";
-import LandingPage from "./pages/landing";
+import HomePage from "./pages/home";
 import LogInPage from "./pages/log-in";
 import SignUpPage from "./pages/sign-up";
 
@@ -15,7 +15,7 @@ export default function App() {
       <Router>
         <Switch>
           <Route path="/" exact>
-            <LandingPage />
+            <HomePage />
           </Route>
           <Route path={ROUTES.LOG_IN}>
             <LogInPage />

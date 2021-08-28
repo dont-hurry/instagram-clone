@@ -3,7 +3,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../lib/firebase";
 
 export default function useAuthStateObserver() {
-  const [uid, setUid] = useState(null);
+  // undefined indicates the page is loading the user authentication state
+  const [uid, setUid] = useState();
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
