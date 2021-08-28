@@ -1,0 +1,45 @@
+.outerContainer {
+  background: #fff;
+  border-bottom: 1px solid rgb(220, 220, 220);
+  height: 55px;
+}
+
+.innerContainer {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 975px;
+  padding: 0 20px;
+}
+
+.logo {
+  position: relative;
+  top: 2.5px;
+}
+
+.buttonsContainer {
+  align-items: center;
+  display: flex;
+  gap: 25px;
+}
+
+.buttonsContainer svg {
+  fill: rgb(40, 40, 40);
+}
+
+.avatar {
+  border: 1px solid rgb(40, 40, 40);
+  border-radius: 50%;
+  display: grid;
+  height: 28px;
+  overflow: hidden;
+  place-items: center;
+  width: 28px;
+}
+
+.avatar img {
+  height: 22px;
+  width: 22px;
+}

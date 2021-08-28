@@ -1,5 +1,5 @@
-import Header from "../components/Header";
+import Navigation from "../components/Navigation";
 
 export default function Feed() {
-  return <Header />;
+  return <Navigation />;
 }

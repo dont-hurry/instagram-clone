@@ -1,8 +1,7 @@
 .pageContainer {
-  align-items: center;
-  display: flex;
+  display: grid;
   height: 100vh;
-  justify-content: center;
+  place-items: center;
   width: 100vw;
 }
 

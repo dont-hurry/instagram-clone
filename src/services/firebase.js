@@ -47,3 +47,9 @@ export async function handleLogIn({ email, password }) {
 export async function handleSignOut() {
   await signOut(auth);
 }
+
+export async function getUserInfoByUid(uid) {
+  const q = query(collection(db, "users"), where("uid", "==", uid));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs[0].data();
+}
