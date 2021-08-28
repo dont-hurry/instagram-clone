@@ -6,7 +6,7 @@ export default function SuggestedUser({ fullName, username }) {
     <div className={styles.container}>
       <div className={styles.left}>
         <img
-          src={`/images/avatar/${username}.jpeg`}
+          src={`/images/avatars/${username}.jpeg`}
           alt=""
           onError={(event) => {
             event.target.src = `/images/avatars/default.jpeg`;
