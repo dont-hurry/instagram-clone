@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import useAuthStateObserver from "./hooks/use-auth-state-observer";
 import UserContext from "./context/user";
+import RedirectRoute from "./components/helpers/RedirectRoute";
 
 import * as ROUTES from "./constants/routes";
 import HomePage from "./pages/home";
@@ -17,12 +18,12 @@ export default function App() {
           <Route path="/" exact>
             <HomePage />
           </Route>
-          <Route path={ROUTES.LOG_IN}>
+          <RedirectRoute path={ROUTES.LOG_IN} condition={uid} to="/">
             <LogInPage />
-          </Route>
-          <Route path={ROUTES.SIGN_UP}>
+          </RedirectRoute>
+          <RedirectRoute path={ROUTES.SIGN_UP} condition={uid} to="/">
             <SignUpPage />
-          </Route>
+          </RedirectRoute>
         </Switch>
       </Router>
     </UserContext.Provider>

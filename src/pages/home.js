@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import UserContext from "../context/user";
 
 import LoadingPage from "./loading";
@@ -7,6 +7,8 @@ import FeedPage from "./feed";
 
 export default function Home() {
   const { uid } = useContext(UserContext);
+
+  useEffect(() => (document.title = "Instagram"), []);
 
   // Waits for the final authentication state
   if (uid === undefined) {
