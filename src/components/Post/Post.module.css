@@ -9,3 +9,22 @@
   /* Subtract border sizes */
   width: 613px;
 }
+
+.bodyWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 7.5px;
+  padding: 0 15px;
+}
+
+.captionUsername {
+  color: rgb(40, 40, 40);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.captionContent {
+  color: rgb(40, 40, 40);
+  font-size: 14px;
+  font-weight: 400;
+}
