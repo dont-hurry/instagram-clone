@@ -39,6 +39,8 @@ export async function handleSignUp({ email, fullName, username, password }) {
     followers: [],
     following: [],
   });
+
+  return uid;
 }
 
 export async function handleLogIn({ email, password }) {
@@ -73,5 +75,23 @@ export async function getSuggestedUsers(uid, following) {
   return querySnapshot.docs.map((doc) => {
     const { fullName, username } = doc.data();
     return { fullName, username };
+  });
+}
+
+export async function addPost(post) {
+  await addDoc(collection(db, "posts"), post);
+}
+
+export async function getFollowingPosts({ uid, following }) {
+  const q = query(
+    collection(db, "posts"),
+    where("uid", "in", [uid, ...following])
+  );
+
+  const querySnapshot = await getDocs(q);
+
+  return querySnapshot.docs.map((doc) => {
+    const postId = doc.id;
+    return { postId, ...doc.data() };
   });
 }
