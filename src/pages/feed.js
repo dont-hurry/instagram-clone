@@ -33,7 +33,7 @@ export default function Feed() {
     <div onClick={handlePageClick}>
       <Navigation isNavMenuActive={isNavMenuActive} username={username} />
       <div className={styles.twoColumns}>
-        <Timeline />
+        <Timeline uid={uid} following={following} />
         {uid && username && following && (
           <Sidebar uid={uid} username={username} following={following} />
         )}
