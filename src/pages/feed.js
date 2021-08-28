@@ -11,15 +11,13 @@ export default function Feed() {
 
   const [isNavMenuActive, setIsNavMenuActive] = useState(false);
   const [userInfo, setUserInfo] = useState({});
-  const { username } = userInfo;
+  const { username, following } = userInfo;
 
   useEffect(() => {
-    const getUserInfo = async () => {
+    (async () => {
       const userInfo = await getUserInfoByUid(uid);
       setUserInfo(userInfo);
-    };
-
-    getUserInfo();
+    })();
   }, [uid]);
 
   // Make the menu close when clicking on empty space
@@ -36,7 +34,9 @@ export default function Feed() {
       <Navigation isNavMenuActive={isNavMenuActive} username={username} />
       <div className={styles.twoColumns}>
         <Timeline />
-        <Sidebar username={username} />
+        {uid && username && following && (
+          <Sidebar uid={uid} username={username} following={following} />
+        )}
       </div>
     </div>
   );

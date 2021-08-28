@@ -1,9 +1,13 @@
-import { useRef, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getSuggestedUsers } from "../../services/firebase";
+import SuggestedUser from "./SuggestedUser";
 import styles from "./Sidebar.module.css";
 
-export default function Sidebar({ username }) {
+export default function Sidebar({ uid, username, following }) {
   const containerRef = useRef();
+
+  const [suggestedUsers, setSuggestedUsers] = useState([]);
 
   const updateContainerStyle = () => {
     const containerElement = containerRef.current;
@@ -19,6 +23,15 @@ export default function Sidebar({ username }) {
 
     return () => window.removeEventListener("resize", updateContainerStyle);
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      if (uid && following) {
+        const returnedUsers = await getSuggestedUsers(uid, following);
+        setSuggestedUsers(returnedUsers);
+      }
+    })();
+  }, [uid, following]);
 
   return (
     <div className={styles.container} ref={containerRef}>
@@ -38,7 +51,15 @@ export default function Sidebar({ username }) {
 
       <div>
         <div className={styles.suggestionText}>Suggestions For You</div>
-        <div></div>
+        <div>
+          {suggestedUsers.map(({ fullName, username }) => (
+            <SuggestedUser
+              key={username}
+              fullName={fullName}
+              username={username}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

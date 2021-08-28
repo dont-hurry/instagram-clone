@@ -7,6 +7,7 @@ import {
   addDoc,
   collection,
   getDocs,
+  limit,
   query,
   where,
 } from "firebase/firestore/lite";
@@ -52,4 +53,25 @@ export async function getUserInfoByUid(uid) {
   const q = query(collection(db, "users"), where("uid", "==", uid));
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs[0].data();
+}
+
+export async function getSuggestedUsers(uid, following) {
+  let q;
+
+  if (following.length > 0) {
+    q = query(
+      collection(db, "users"),
+      where("uid", "not-in", [uid, ...following]),
+      limit(5)
+    );
+  } else {
+    q = query(collection(db, "users"), where("uid", "!=", uid), limit(5));
+  }
+
+  const querySnapshot = await getDocs(q);
+
+  return querySnapshot.docs.map((doc) => {
+    const { fullName, username } = doc.data();
+    return { fullName, username };
+  });
 }
