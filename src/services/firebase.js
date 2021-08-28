@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import {
   addDoc,
@@ -41,4 +42,8 @@ export async function handleSignUp({ email, fullName, username, password }) {
 
 export async function handleLogIn({ email, password }) {
   await signInWithEmailAndPassword(auth, email, password);
+}
+
+export async function handleSignOut() {
+  await signOut(auth);
 }
