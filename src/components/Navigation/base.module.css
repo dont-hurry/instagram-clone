@@ -16,13 +16,14 @@
 
 .logo {
   position: relative;
-  top: 2.5px;
+  top: 5px;
 }
 
 .buttonsContainer {
   align-items: center;
   display: flex;
   gap: 25px;
+  position: relative; /* For menu */
 }
 
 .buttonsContainer svg {
@@ -30,8 +31,9 @@
 }
 
 .avatar {
-  border: 1px solid rgb(40, 40, 40);
+  border: 1px solid transparent;
   border-radius: 50%;
+  cursor: pointer;
   display: grid;
   height: 28px;
   overflow: hidden;
@@ -39,7 +41,34 @@
   width: 28px;
 }
 
+.avatar[data-active="true"] {
+  border-color: rgb(40, 40, 40);
+}
+
 .avatar img {
+  border-radius: 50%;
   height: 22px;
   width: 22px;
+}
+
+.menu {
+  background: #fff;
+  border-radius: 5px;
+  /* xOffset, yOffset, blur, spread */
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  right: -15px;
+  top: 35px;
+  width: 230px;
+}
+
+.menuItem {
+  color: rgb(40, 40, 40);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 15px;
+}
+
+.menuItem:hover {
+  background: rgb(250, 250, 250);
 }
