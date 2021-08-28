@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getSuggestedUsers } from "../../services/firebase";
 import SuggestedUser from "./SuggestedUser";
 import styles from "./Sidebar.module.css";
+import Avatar from "../ui/Avatar";
 
 export default function Sidebar({ uid, username, following }) {
   const containerRef = useRef();
@@ -37,14 +38,7 @@ export default function Sidebar({ uid, username, following }) {
     <div className={styles.container} ref={containerRef}>
       <div className={styles.userBlock}>
         <Link to={`/${username}/`}>
-          <img
-            src={`/images/avatars/${username}.jpeg`}
-            alt=""
-            className={styles.userAvatar}
-            onError={(event) => {
-              event.target.src = `/images/avatars/default.jpeg`;
-            }}
-          />
+          <Avatar username={username} className={styles.userAvatar} />
         </Link>
         <Link to={`/${username}/`}>{username}</Link>
       </div>
