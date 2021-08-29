@@ -6,6 +6,8 @@ import Actions from "./Actions";
 import LikeCount from "./LikeCount";
 import Caption from "./Caption";
 import Comments from "./Comments";
+import TimeFromNow from "./TimeFromNow";
+import AddComment from "./AddComment";
 
 function PostImage({ imagePath }) {
   return (
@@ -40,6 +42,8 @@ export default function Post({
         <LikeCount count={likes.length} />
         <Caption username={username} caption={caption} />
         <Comments comments={comments} />
+        <TimeFromNow dateCreated={dateCreated} />
+        <AddComment />
       </div>
     </div>
   );
