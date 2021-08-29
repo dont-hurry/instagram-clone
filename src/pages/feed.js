@@ -2,16 +2,17 @@ import { useContext, useState, useEffect } from "react";
 import AuthContext from "../context/auth";
 import { getUserInfoByUid } from "../services/firebase";
 import Navigation from "../components/Navigation";
+import styles from "./page-base.module.css";
 import Timeline from "../components/Timeline";
 import Sidebar from "../components/Sidebar";
-import styles from "./feed.module.css";
 
 export default function Feed() {
   const { uid } = useContext(AuthContext);
 
-  const [isNavMenuActive, setIsNavMenuActive] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const { username, following } = userInfo;
+
+  const [isNavMenuActive, setIsNavMenuActive] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -32,7 +33,7 @@ export default function Feed() {
   return (
     <div onClick={handlePageClick}>
       <Navigation isNavMenuActive={isNavMenuActive} username={username} />
-      <div className={styles.twoColumns}>
+      <div className={styles.twoColumnsFeedPage}>
         <Timeline uid={uid} following={following} />
         {uid && username && following && (
           <Sidebar uid={uid} username={username} following={following} />

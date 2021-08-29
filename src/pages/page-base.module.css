@@ -51,3 +51,76 @@
   color: rgb(0, 150, 245);
   text-decoration: none;
 }
+
+.twoColumnsLandingPage {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 454px 1fr;
+}
+
+.twoColumnsFeedPage {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 615px 290px;
+  margin: 0 auto;
+  width: 935px;
+}
+
+.screenshotTransition {
+  height: 618px;
+  position: relative;
+  width: 454px;
+}
+
+.screenshotTransition img {
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  animation-name: imageFadeInOut;
+  animation-timing-function: ease-in-out;
+  height: 427px;
+  left: 151px;
+  opacity: 0; /* Initial opacity */
+  position: absolute;
+  top: 99px;
+  width: 240px;
+}
+
+@keyframes imageFadeInOut {
+  /* Split 100% into 15 portions */
+  0% {
+    opacity: 0;
+  }
+  6.67% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  26.67% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Divide animation durations into 5 segments and minus an 1s offset */
+.screenshotTransition img:nth-of-type(1) {
+  animation-delay: -1s;
+}
+
+.screenshotTransition img:nth-of-type(2) {
+  animation-delay: 2s;
+}
+
+.screenshotTransition img:nth-of-type(3) {
+  animation-delay: 5s;
+}
+
+.screenshotTransition img:nth-of-type(4) {
+  animation-delay: 8s;
+}
+
+.screenshotTransition img:nth-of-type(5) {
+  animation-delay: 11s;
+}
