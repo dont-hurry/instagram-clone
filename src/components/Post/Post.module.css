@@ -1,6 +1,7 @@
 .container {
   border: 1px solid rgb(220, 220, 220);
   border-radius: 2.5px;
+  font-size: 0;
 }
 
 .postImage {
@@ -13,18 +14,17 @@
 .bodyWrapper {
   display: flex;
   flex-direction: column;
+  font-size: 14px;
   gap: 7.5px;
   padding: 0 15px;
 }
 
 .captionUsername {
   color: rgb(40, 40, 40);
-  font-size: 14px;
   font-weight: 600;
 }
 
 .captionContent {
   color: rgb(40, 40, 40);
-  font-size: 14px;
   font-weight: 400;
 }
