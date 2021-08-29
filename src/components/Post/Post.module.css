@@ -4,10 +4,10 @@
   font-size: 0;
 }
 
+/* For width and height, subtract border size 2px */
 .postImage {
   max-height: 613px;
   object-fit: cover;
-  /* Subtract border sizes */
   width: 613px;
 }
 
@@ -17,14 +17,4 @@
   font-size: 14px;
   gap: 7.5px;
   padding: 0 15px;
-}
-
-.captionUsername {
-  color: rgb(40, 40, 40);
-  font-weight: 600;
-}
-
-.captionContent {
-  color: rgb(40, 40, 40);
-  font-weight: 400;
 }

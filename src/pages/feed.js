@@ -16,8 +16,8 @@ export default function Feed() {
 
   useEffect(() => {
     (async () => {
-      const userInfo = await getUserInfoByUid(uid);
-      setUserInfo(userInfo);
+      const returnedUserInfo = await getUserInfoByUid(uid);
+      setUserInfo(returnedUserInfo);
     })();
   }, [uid]);
 
@@ -34,7 +34,7 @@ export default function Feed() {
     <div onClick={handlePageClick}>
       <Navigation isNavMenuActive={isNavMenuActive} username={username} />
       <div className={styles.twoColumnsFeedPage}>
-        <Timeline uid={uid} following={following} />
+        {uid && following && <Timeline uid={uid} following={following} />}
         {uid && username && following && (
           <Sidebar uid={uid} username={username} following={following} />
         )}

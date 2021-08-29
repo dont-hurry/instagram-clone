@@ -1,16 +1,17 @@
 import { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { getSuggestedUsers } from "../../services/firebase";
-import SuggestedUser from "./SuggestedUser";
 import styles from "./Sidebar.module.css";
+import { Link } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
 import Avatar from "../ui/Avatar";
+import SuggestedUser from "./SuggestedUser";
 
 export default function Sidebar({ uid, username, following }) {
   const containerRef = useRef();
 
   const [suggestedUsers, setSuggestedUsers] = useState([]);
 
-  const updateContainerStyle = () => {
+  const updateContainerPosition = () => {
     const containerElement = containerRef.current;
 
     if (window.innerWidth >= 935) {
@@ -19,32 +20,30 @@ export default function Sidebar({ uid, username, following }) {
   };
 
   useEffect(() => {
-    updateContainerStyle();
-    window.addEventListener("resize", updateContainerStyle);
+    updateContainerPosition();
+    window.addEventListener("resize", updateContainerPosition);
 
-    return () => window.removeEventListener("resize", updateContainerStyle);
+    return () => window.removeEventListener("resize", updateContainerPosition);
   }, []);
 
   useEffect(() => {
     (async () => {
-      if (uid && following) {
-        const returnedUsers = await getSuggestedUsers(uid, following);
-        setSuggestedUsers(returnedUsers);
-      }
+      const returnedSuggestedUsers = await getSuggestedUsers(uid, following);
+      setSuggestedUsers(returnedSuggestedUsers);
     })();
   }, [uid, following]);
 
   return (
     <div className={styles.container} ref={containerRef}>
       <div className={styles.userBlock}>
-        <Link to={`/${username}/`}>
+        <Link to={ROUTES.PROFILE(username)}>
           <Avatar username={username} className={styles.userAvatar} />
         </Link>
-        <Link to={`/${username}/`}>{username}</Link>
+        <Link to={ROUTES.PROFILE(username)}>{username}</Link>
       </div>
 
       <div>
-        <div className={styles.suggestionText}>Suggestions For You</div>
+        <div className={styles.suggestionTitle}>Suggestions For You</div>
         <div>
           {suggestedUsers.map(({ fullName, username }) => (
             <SuggestedUser

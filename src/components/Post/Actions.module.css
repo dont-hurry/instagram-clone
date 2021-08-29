@@ -4,26 +4,13 @@
   padding-top: 7.5px;
 }
 
+.container svg {
+  cursor: pointer;
+}
+
 .left,
 .right {
   align-items: center;
   display: flex;
   gap: 15px;
-}
-
-.svgLike,
-.svgComment,
-.svgUnlike,
-.svgSave {
-  cursor: pointer;
-}
-
-.svgLike,
-.svgComment,
-.svgSave {
-  fill: rgb(40, 40, 40);
-}
-
-.svgUnlike {
-  fill: rgb(235, 75, 85);
 }

@@ -1,21 +1,22 @@
-import LikeSvg from "../../components/icons/Like";
-import UnlikeSvg from "../../components/icons/Unlike";
-import CommentSvg from "../icons/Comment";
-import SaveSvg from "../icons/Save";
 import styles from "./Actions.module.css";
+import LikeIcon from "../../components/icons/Like";
+import UnlikeIcon from "../../components/icons/Unlike";
+import CommentIcon from "../icons/Comment";
+import SaveIcon from "../icons/Save";
 
 export default function Actions({ uid, likes }) {
-  const userLikes = likes.includes(uid);
+  const doesUserLike = likes.includes(uid);
 
   return (
     <div className={styles.container}>
       <div className={styles.left}>
-        {!userLikes && <LikeSvg className={styles.svgLike} />}
-        {userLikes && <UnlikeSvg className={styles.svgUnlike} />}
-        <CommentSvg className={styles.svgComment} />
+        {!doesUserLike && <LikeIcon />}
+        {doesUserLike && <UnlikeIcon />}
+        <CommentIcon />
       </div>
+
       <div className={styles.right}>
-        <SaveSvg className={styles.svgSave} />
+        <SaveIcon />
       </div>
     </div>
   );

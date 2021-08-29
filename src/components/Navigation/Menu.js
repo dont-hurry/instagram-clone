@@ -1,31 +1,31 @@
-import styles from "./Navigation.module.css";
-import { handleSignOut } from "../../services/firebase";
+import styles from "./Menu.module.css";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-import ProfileSvg from "../icons/Profile";
-import SavedSvg from "../icons/Saved";
-import SettingsSvg from "../icons/Settings";
+import ProfileIcon from "../icons/Profile";
+import SavedIcon from "../icons/Saved";
+import SettingsIcon from "../icons/Settings";
+import { handleSignOut } from "../../services/firebase";
 
 export default function Menu({ username }) {
   return (
     <div className={styles.menu}>
-      <Link to={`/${username}/`} className={styles.menuItem}>
-        <ProfileSvg />
+      <Link to={ROUTES.PROFILE(username)} className={styles.menuItem}>
+        <ProfileIcon />
         Profile
       </Link>
-      <Link to={`/${username}/saved/`} className={styles.menuItem}>
-        <SavedSvg />
+      <Link to={ROUTES.SAVED(username)} className={styles.menuItem}>
+        <SavedIcon />
         Saved
       </Link>
       <Link to={ROUTES.SETTINGS} className={styles.menuItem}>
-        <SettingsSvg />
+        <SettingsIcon />
         Settings
       </Link>
       <hr />
       <div
         className={styles.menuItem}
-        role="button"
         onClick={() => handleSignOut()}
+        role="button"
       >
         Log Out
       </div>

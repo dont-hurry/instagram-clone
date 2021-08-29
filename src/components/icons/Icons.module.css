@@ -1,5 +1,13 @@
+.colorBlack {
+  fill: rgb(40, 40, 40);
+}
+
 .colorGray {
   fill: rgb(200, 200, 200);
+}
+
+.colorRed {
+  fill: rgb(235, 75, 85);
 }
 
 .center {

@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css";
-import HomeSvg from "../icons/Home";
-import Menu from "./Menu";
+import { Link } from "react-router-dom";
+import HomeIcon from "../icons/Home";
 import Avatar from "../ui/Avatar";
+import Menu from "./Menu";
 
 export default function Navigation({ isNavMenuActive, username }) {
   return (
@@ -14,15 +14,16 @@ export default function Navigation({ isNavMenuActive, username }) {
 
         <div className={styles.buttonsContainer}>
           <Link to="/">
-            <HomeSvg filled={!isNavMenuActive} />
+            <HomeIcon filled={!isNavMenuActive} />
           </Link>
           <div
-            className={styles.avatar}
+            className={styles.avatarWrapper}
             data-active={isNavMenuActive} // For CSS
             data-toggle-nav-menu="true" // For event delegation (in feed page)
           >
             <Avatar
               username={username}
+              className={styles.avatar}
               data-toggle-nav-menu="true" // For event delegation (in feed page)
             />
           </div>
