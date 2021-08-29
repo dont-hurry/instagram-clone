@@ -1,0 +1,53 @@
+.page {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+  width: 100vw;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 350px;
+}
+
+.container h1 {
+  font-size: 0;
+  padding: 10px 0;
+}
+
+.container h2 {
+  color: rgb(140, 140, 140);
+  font-size: 18px;
+  font-weight: normal;
+  margin: 15px 0;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px 0;
+}
+
+.inputsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 7.5px;
+}
+
+.errorMessage {
+  color: rgb(240, 75, 85);
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.textSmall {
+  font-size: 14px;
+}
+
+.link {
+  color: rgb(0, 150, 245);
+  text-decoration: none;
+}

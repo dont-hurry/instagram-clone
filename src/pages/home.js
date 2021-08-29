@@ -1,25 +1,17 @@
-import { useContext, useEffect } from "react";
-import UserContext from "../context/user";
-
+import { useEffect } from "react";
+import * as AUTH_STATUS from "../constants/auth-status";
 import LoadingPage from "./loading";
-import LandingPage from "./landing";
 import FeedPage from "./feed";
+import LandingPage from "./landing";
 
-export default function Home() {
-  const { uid } = useContext(UserContext);
-
+export default function Home({ authStatus }) {
   useEffect(() => (document.title = "Instagram"), []);
 
-  // Waits for the final authentication state
-  if (uid === undefined) {
+  if (authStatus === AUTH_STATUS.WAITING) {
     return <LoadingPage />;
-  }
-  // User is not logged in
-  else if (uid === null) {
-    return <LandingPage />;
-  }
-  // User logged in
-  else {
+  } else if (authStatus === AUTH_STATUS.LOGGED_IN) {
     return <FeedPage />;
+  } else if (authStatus === AUTH_STATUS.NOT_LOGGED_IN) {
+    return <LandingPage />;
   }
 }

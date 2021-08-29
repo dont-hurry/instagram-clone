@@ -5,8 +5,8 @@ import { handleLogIn } from "../services/firebase";
 
 import BorderedWrapper from "../components/ui/BorderedWrapper";
 import Input from "../components/ui/Input";
-import Button from "../components/ui/Button";
-import styles from "./PagesBase.module.css";
+import SubmitButton from "../components/ui/SubmitButton";
+import styles from "./page-base.module.css";
 
 export default function Landing() {
   const [email, setEmail] = useState("");

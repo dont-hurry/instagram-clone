@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import UserContext from "../context/user";
+import AuthContext from "../context/auth";
 import { getUserInfoByUid } from "../services/firebase";
 import Navigation from "../components/Navigation";
 import Timeline from "../components/Timeline";
@@ -7,7 +7,7 @@ import Sidebar from "../components/Sidebar";
 import styles from "./feed.module.css";
 
 export default function Feed() {
-  const { uid } = useContext(UserContext);
+  const { uid } = useContext(AuthContext);
 
   const [isNavMenuActive, setIsNavMenuActive] = useState(false);
   const [userInfo, setUserInfo] = useState({});

@@ -1,33 +1,31 @@
 import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import * as ROUTES from "../constants/routes";
+import { useHistory, Link } from "react-router-dom";
 import { doesUsernameExist, handleSignUp } from "../services/firebase";
-
+import { getErrorMessageByCode } from "../helpers/error-code";
+import styles from "./page-base.module.css";
 import BorderedWrapper from "../components/ui/BorderedWrapper";
 import Input from "../components/ui/Input";
-import Button from "../components/ui/Button";
-import styles from "./PagesBase.module.css";
+import SubmitButton from "../components/ui/SubmitButton";
+import * as ROUTES from "../constants/routes";
 
 export default function SignUp() {
-  const history = useHistory();
-
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const [errorMessage, setErrorMessage] = useState(null);
-  // Controls the submit button
-  const [waitingForResponse, setWaitingForResponse] = useState(false);
+  const [isWaitingResponse, setIsWaitingResponse] = useState(false); // Controls the submit button
 
   const isFormValid = email && fullName && username && password.length >= 6;
+
+  const history = useHistory();
 
   useEffect(() => (document.title = "Sign Up - Instagram"), []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    setWaitingForResponse(true);
+    setIsWaitingResponse(true);
 
     try {
       const usernameExists = await doesUsernameExist(username);
@@ -39,73 +37,67 @@ export default function SignUp() {
         history.push("/");
       }
     } catch (error) {
-      switch (error.code) {
-        case "auth/email-already-in-use":
-          setErrorMessage(`Another account is using ${email}.`);
-          break;
-        case "auth/invalid-email":
-          setErrorMessage("Enter a valid email address.");
-          break;
-        default:
-          setErrorMessage("Unknown error.");
-      }
+      const errorMessage = getErrorMessageByCode(error.code, { email });
+      setErrorMessage(errorMessage);
     }
 
-    setWaitingForResponse(false);
+    setIsWaitingResponse(false);
   };
 
   return (
-    <div className={styles.pageContainer}>
+    <div className={styles.page}>
       <div className={styles.container}>
         <BorderedWrapper>
           <h1>
             <img src="/images/logo.png" alt="" />
           </h1>
           <h2>Sign up to see photos and videos from your friends.</h2>
-          <form onSubmit={handleSubmit}>
-            <Input
-              aria-label="Email"
-              onChange={(event) => {
-                setEmail(event.target.value);
-                setErrorMessage(null);
-              }}
-              placeholder="Email"
-              type="text"
-              value={email}
-            />
-            <Input
-              aria-label="Full Name"
-              onChange={(event) => {
-                setFullName(event.target.value);
-                setErrorMessage(null);
-              }}
-              placeholder="Full Name"
-              type="text"
-              value={fullName}
-            />
-            <Input
-              aria-label="Username"
-              onChange={(event) => {
-                setUsername(event.target.value);
-                setErrorMessage(null);
-              }}
-              placeholder="Username"
-              type="text"
-              value={username}
-            />
-            <Input
-              aria-label="Password"
-              onChange={(event) => {
-                setPassword(event.target.value);
-                setErrorMessage(null);
-              }}
-              placeholder="Password"
-              type="password"
-              value={password}
-            />
-            <Button disabled={waitingForResponse || !isFormValid}>
+          <form className={styles.formWrapper} onSubmit={handleSubmit}>
+            <div className={styles.inputsWrapper}>
+              <Input
+                aria-label="Email"
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                  setErrorMessage(null);
+                }}
+                placeholder="Email"
+                type="text"
+                value={email}
+              />
+              <Input
+                aria-label="Full Name"
+                onChange={(event) => {
+                  setFullName(event.target.value);
+                  setErrorMessage(null);
+                }}
+                placeholder="Full Name"
+                type="text"
+                value={fullName}
+              />
+              <Input
+                aria-label="Username"
+                onChange={(event) => {
+                  setUsername(event.target.value);
+                  setErrorMessage(null);
+                }}
+                placeholder="Username"
+                type="text"
+                value={username}
+              />
+              <Input
+                aria-label="Password"
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                  setErrorMessage(null);
+                }}
+                placeholder="Password"
+                type="password"
+                value={password}
+              />
+            </div>
+            <SubmitButton disabled={isWaitingResponse || !isFormValid}>
               Sign up
-            </Button>
+            </SubmitButton>
             {errorMessage && (
               <div className={styles.errorMessage}>{errorMessage}</div>
             )}
