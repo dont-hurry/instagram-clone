@@ -1,7 +1,7 @@
-import LikeSvg from "../../components/svgs/Like";
-import UnlikeSvg from "../../components/svgs/Unlike";
-import CommentSvg from "../svgs/Comment";
-import SaveSvg from "../svgs/Save";
+import LikeSvg from "../../components/icons/Like";
+import UnlikeSvg from "../../components/icons/Unlike";
+import CommentSvg from "../icons/Comment";
+import SaveSvg from "../icons/Save";
 import styles from "./Actions.module.css";
 
 export default function Actions({ uid, likes }) {

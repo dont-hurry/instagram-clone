@@ -2,9 +2,9 @@ import styles from "./Navigation.module.css";
 import { handleSignOut } from "../../services/firebase";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-import ProfileSvg from "../svgs/Profile";
-import SavedSvg from "../svgs/Saved";
-import SettingsSvg from "../svgs/Settings";
+import ProfileSvg from "../icons/Profile";
+import SavedSvg from "../icons/Saved";
+import SettingsSvg from "../icons/Settings";
 
 export default function Menu({ username }) {
   return (

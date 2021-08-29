@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css";
-import HomeSvg from "../svgs/Home";
+import HomeSvg from "../icons/Home";
 import Menu from "./Menu";
 import Avatar from "../ui/Avatar";
 
