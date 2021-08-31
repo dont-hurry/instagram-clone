@@ -39,8 +39,6 @@ export async function handleSignUp({ email, fullName, username, password }) {
     followers: [],
     following: [],
   });
-
-  return uid;
 }
 
 export async function handleLogIn({ email, password }) {
@@ -57,18 +55,14 @@ export async function getUserInfoByUid(uid) {
   return querySnapshot.docs[0].data();
 }
 
-export async function getSuggestedUsers(uid, following) {
+export async function getSuggestedUsers(uid, following, limitNum = 5) {
   let q;
 
-  if (following.length > 0) {
-    q = query(
-      collection(db, "users"),
-      where("uid", "not-in", [uid, ...following]),
-      limit(5)
-    );
-  } else {
-    q = query(collection(db, "users"), where("uid", "!=", uid), limit(5));
-  }
+  q = query(
+    collection(db, "users"),
+    where("uid", "not-in", [uid, ...following]),
+    limit(limitNum)
+  );
 
   const querySnapshot = await getDocs(q);
 
