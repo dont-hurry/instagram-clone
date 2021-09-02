@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { getSuggestedUsers } from "../../services/firebase";
-import styles from "./Sidebar.module.css";
+import styles from "./index.module.css";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import Avatar from "../ui/Avatar";

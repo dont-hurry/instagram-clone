@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getFollowingPosts } from "../../services/firebase";
-import styles from "./Timeline.module.css";
+import styles from "./index.module.css";
 import Post from "../Post";
 
 export default function Timeline({ uid, following }) {
