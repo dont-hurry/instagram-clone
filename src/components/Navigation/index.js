@@ -1,7 +1,7 @@
 import styles from "./Navigation.module.css";
 import { Link } from "react-router-dom";
 import HomeIcon from "../icons/Home";
-import Avatar from "../ui/Avatar";
+import Avatar from "../UI/Avatar";
 import Menu from "./Menu";
 
 export default function Navigation({ isNavMenuActive, username }) {

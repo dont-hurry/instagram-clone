@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Avatar from "../ui/Avatar";
+import Avatar from "../UI/Avatar";
 import styles from "./SuggestedUser.module.css";
 import * as ROUTES from "../../constants/routes";
 

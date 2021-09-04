@@ -3,9 +3,9 @@ import { useHistory, Link } from "react-router-dom";
 import { handleLogIn } from "../services/firebase";
 import { getErrorMessageByCode } from "../helpers/error-code";
 import styles from "./page-base.module.css";
-import BorderedWrapper from "../components/ui/BorderedWrapper";
-import Input from "../components/ui/Input";
-import SubmitButton from "../components/ui/SubmitButton";
+import BorderedWrapper from "../components/UI/BorderedWrapper";
+import Input from "../components/UI/Input";
+import SubmitButton from "../components/UI/SubmitButton";
 import * as ROUTES from "../constants/routes";
 
 export default function LogIn() {

@@ -3,7 +3,7 @@ import { getSuggestedUsers } from "../../services/firebase";
 import styles from "./index.module.css";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-import Avatar from "../ui/Avatar";
+import Avatar from "../UI/Avatar";
 import SuggestedUser from "./SuggestedUser";
 
 export default function Sidebar({ uid, username, following }) {
