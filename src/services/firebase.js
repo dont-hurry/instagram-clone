@@ -5,10 +5,13 @@ import {
 } from "firebase/auth";
 import {
   addDoc,
+  arrayUnion,
   collection,
+  doc,
   getDocs,
   limit,
   query,
+  updateDoc,
   where,
 } from "firebase/firestore/lite";
 import { auth, db } from "../lib/firebase";
@@ -87,5 +90,13 @@ export async function getFollowingPosts({ uid, following }) {
   return querySnapshot.docs.map((doc) => {
     const postId = doc.id;
     return { postId, ...doc.data() };
+  });
+}
+
+export async function addComment({ postId, username, comment }) {
+  const postRef = doc(db, "posts", postId);
+
+  return updateDoc(postRef, {
+    comments: arrayUnion({ comment, username }),
   });
 }

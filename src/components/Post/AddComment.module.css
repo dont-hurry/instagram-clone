@@ -18,10 +18,14 @@
   outline: none;
 }
 
-.formWrapper button {
+.postButton {
   background: transparent;
   border: 0;
   color: rgb(0, 150, 245);
   cursor: pointer;
   opacity: 0.3;
+}
+
+.postButtonActive {
+  opacity: 1;
 }

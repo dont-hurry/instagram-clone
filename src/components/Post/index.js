@@ -19,10 +19,23 @@ function PostImage({ imagePath }) {
   );
 }
 
-export default function Post({
-  post: { uid, imagePath, likes, caption, comments, dateCreated },
-}) {
+export default function Post({ post }) {
+  const {
+    postId,
+    uid,
+    imagePath,
+    likes,
+    caption,
+    comments: postComments,
+    dateCreated,
+  } = post;
+
   const [username, setUsername] = useState("");
+  const [comments, setComments] = useState(postComments);
+
+  const addToComments = ({ username, comment }) => {
+    setComments((prevState) => [...prevState, { username, comment }]);
+  };
 
   useEffect(() => {
     (async () => {
@@ -43,7 +56,11 @@ export default function Post({
         <Caption username={username} caption={caption} />
         <Comments comments={comments} />
         <TimeFromNow dateCreated={dateCreated} />
-        <AddComment />
+        <AddComment
+          postId={postId}
+          username={username}
+          addToComments={addToComments}
+        />
       </div>
     </div>
   );
