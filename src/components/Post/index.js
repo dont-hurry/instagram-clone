@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getUserInfoByUid } from "../../services/firebase";
-import styles from "./Post.module.css";
+import styles from "./index.module.css";
 import Header from "./Header";
 import Actions from "./Actions";
 import LikeCount from "./LikeCount";

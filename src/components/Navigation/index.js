@@ -1,4 +1,4 @@
-import styles from "./Navigation.module.css";
+import styles from "./index.module.css";
 import { Link } from "react-router-dom";
 import HomeIcon from "../icons/Home";
 import Avatar from "../UI/Avatar";
