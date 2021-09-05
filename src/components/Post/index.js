@@ -20,21 +20,15 @@ function PostImage({ imagePath }) {
 }
 
 export default function Post({ post }) {
-  const {
-    postId,
-    uid,
-    imagePath,
-    likes,
-    caption,
-    comments: postComments,
-    dateCreated,
-  } = post;
+  const { postId, uid, imagePath, likes, caption, comments, dateCreated } =
+    post;
 
   const [username, setUsername] = useState("");
-  const [comments, setComments] = useState(postComments);
+  // To make newly added comments always visible
+  const [newComments, setNewComments] = useState([]);
 
   const addToComments = ({ username, comment }) => {
-    setComments((prevState) => [...prevState, { username, comment }]);
+    setNewComments((prevState) => [...prevState, { username, comment }]);
   };
 
   useEffect(() => {
@@ -54,7 +48,11 @@ export default function Post({ post }) {
         <Actions uid={uid} likes={likes} />
         <LikeCount count={likes.length} />
         <Caption username={username} caption={caption} />
-        <Comments comments={comments} />
+        <Comments
+          comments={comments}
+          newComments={newComments}
+          postId={postId}
+        />
         <TimeFromNow dateCreated={dateCreated} />
         <AddComment
           postId={postId}

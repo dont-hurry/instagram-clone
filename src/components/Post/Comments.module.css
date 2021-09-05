@@ -15,3 +15,9 @@
   color: rgb(40, 40, 40);
   font-weight: 400;
 }
+
+.viewAllComments {
+  color: rgb(140, 140, 140);
+  font-weight: 400;
+  text-decoration: none;
+}
