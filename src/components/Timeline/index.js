@@ -1,15 +1,23 @@
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
+import UserContext from "../../context/user";
 import { getFollowingPosts } from "../../services/firebase";
 import styles from "./index.module.css";
 import Post from "../Post";
 
-export default function Timeline({ uid, following }) {
+export default function Timeline() {
+  const {
+    uid,
+    userInfo: { following },
+  } = useContext(UserContext);
+
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const returnedPosts = await getFollowingPosts({ uid, following });
-      setPosts(returnedPosts);
+      if (uid && following) {
+        const returnedPosts = await getFollowingPosts({ uid, following });
+        setPosts(returnedPosts);
+      }
     })();
   }, [uid, following]);
 

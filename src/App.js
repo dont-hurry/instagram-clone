@@ -1,7 +1,10 @@
 import useAuthStateObserver from "./hooks/use-auth-state-observer";
-import AuthContext from "./context/auth";
+import { useState, useEffect } from "react";
+import { getUserInfoByUid } from "./services/firebase";
+import UserContext from "./context/user";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/home";
+import SinglePostPage from "./pages/single-post";
 import RedirectRoute from "./components/helpers/RedirectRoute";
 import * as ROUTES from "./constants/routes";
 import * as AUTH_STATUS from "./constants/auth-status";
@@ -11,12 +14,26 @@ import SignUpPage from "./pages/sign-up";
 export default function App() {
   const { status, uid } = useAuthStateObserver();
 
+  const [userInfo, setUserInfo] = useState({});
+
+  useEffect(() => {
+    (async () => {
+      if (!uid) return;
+
+      const returnedUserInfo = await getUserInfoByUid(uid);
+      setUserInfo(returnedUserInfo);
+    })();
+  }, [uid]);
+
   return (
-    <AuthContext.Provider value={{ status, uid }}>
+    <UserContext.Provider value={{ status, uid, userInfo }}>
       <Router>
         <Switch>
           <Route path="/" exact>
-            <HomePage authStatus={status} />
+            <HomePage />
+          </Route>
+          <Route path={ROUTES.SINGLE_POST}>
+            <SinglePostPage />
           </Route>
           <RedirectRoute
             path={ROUTES.LOG_IN}
@@ -34,6 +51,6 @@ export default function App() {
           </RedirectRoute>
         </Switch>
       </Router>
-    </AuthContext.Provider>
+    </UserContext.Provider>
   );
 }

@@ -1,4 +1,5 @@
-import { useRef, useState, useEffect } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
+import UserContext from "../../context/user";
 import { getSuggestedUsers } from "../../services/firebase";
 import styles from "./index.module.css";
 import { Link } from "react-router-dom";
@@ -6,7 +7,12 @@ import * as ROUTES from "../../constants/routes";
 import Avatar from "../UI/Avatar";
 import SuggestedUser from "./SuggestedUser";
 
-export default function Sidebar({ uid, username, following }) {
+export default function Sidebar() {
+  const {
+    uid,
+    userInfo: { username, following },
+  } = useContext(UserContext);
+
   const containerRef = useRef();
 
   const [suggestedUsers, setSuggestedUsers] = useState([]);
@@ -28,8 +34,10 @@ export default function Sidebar({ uid, username, following }) {
 
   useEffect(() => {
     (async () => {
-      const returnedSuggestedUsers = await getSuggestedUsers(uid, following);
-      setSuggestedUsers(returnedSuggestedUsers);
+      if (uid && following) {
+        const returnedSuggestedUsers = await getSuggestedUsers(uid, following);
+        setSuggestedUsers(returnedSuggestedUsers);
+      }
     })();
   }, [uid, following]);
 

@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import UserContext from "../../context/user";
 import Navigation from "../Navigation";
 
-export default function NavigationLayout({ username, children }) {
+export default function NavigationLayout({ children }) {
+  const {
+    userInfo: { username },
+  } = useContext(UserContext);
+
   const [isNavMenuActive, setIsNavMenuActive] = useState(false);
 
   // Make the menu close when clicking on empty space
