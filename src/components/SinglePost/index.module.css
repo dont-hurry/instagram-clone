@@ -1,0 +1,18 @@
+.outerContainer {
+  margin: 0 auto;
+  padding: 90px 0 60px;
+  width: 935px;
+}
+
+.innerContainer {
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 2.5px;
+  display: grid;
+  grid-template-columns: 600px auto;
+}
+
+.image {
+  max-height: 600px;
+  object-fit: cover;
+  width: 600px;
+}

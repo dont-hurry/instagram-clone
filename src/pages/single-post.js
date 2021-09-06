@@ -1,3 +1,10 @@
+import NavigationLayout from "../components/layout/navigation";
+import SinglePost from "../components/SinglePost";
+
 export default function SinglePostPage() {
-  return <div>single post</div>;
+  return (
+    <NavigationLayout>
+      <SinglePost />
+    </NavigationLayout>
+  );
 }
