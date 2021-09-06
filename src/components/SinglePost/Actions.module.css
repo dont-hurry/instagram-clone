@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container svg {
+  cursor: pointer;
+}
+
+.left,
+.right {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+}

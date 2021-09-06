@@ -3,9 +3,16 @@ import UserContext from "../../context/user";
 import { getPostByPostId } from "../../services/firebase";
 import NavigationLayout from "../layout/navigation";
 import styles from "./index.module.css";
+import AuthorContainer from "./AuthorContainer";
+import Comments from "./Comments";
+import Actions from "./Actions";
+import LikeCount from "./LikeCount";
+import TimeFromNow from "./TimeFromNow";
+import AddComment from "./AddComment";
 
 export default function SinglePost() {
   const {
+    uid,
     userInfo: { username },
   } = useContext(UserContext);
 
@@ -34,16 +41,20 @@ export default function SinglePost() {
               className={styles.image}
             />
 
-            <div>
-              <div>USERNAME: {username}</div>
-              <div>CAPTION: {post.caption}</div>
-              <div>LIKES: {post.likes.length}</div>
-              <div>DATE: {post.dateCreated}</div>
-              <div>
-                {post.comments.map((comment, index) => (
-                  <div key={index}>{JSON.stringify(comment)}</div>
-                ))}
+            <div className={styles.textContainer}>
+              <AuthorContainer username={username} />
+              <Comments
+                username={username}
+                caption={post.caption}
+                comments={post.comments}
+              />
+
+              <div className={styles.actionsAndInfoContainer}>
+                <Actions uid={uid} likes={post.likes} />
+                <LikeCount count={post.likes.length} />
+                <TimeFromNow dateCreated={post.dateCreated} />
               </div>
+              <AddComment />
             </div>
           </div>
         </div>

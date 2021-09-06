@@ -8,6 +8,7 @@ import {
   arrayUnion,
   collection,
   doc,
+  getDoc,
   getDocs,
   limit,
   query,
@@ -99,4 +100,10 @@ export async function addComment({ postId, username, comment }) {
   return updateDoc(postRef, {
     comments: arrayUnion({ comment, username }),
   });
+}
+
+export async function getPostByPostId(postId) {
+  const postRef = doc(db, "posts", postId);
+  const snapshot = await getDoc(postRef);
+  return snapshot.data();
 }
