@@ -1,5 +1,7 @@
 .container {
   display: flex;
+  /* Remove offsets caused by Link component */
+  font-size: 0;
   justify-content: space-between;
   padding: 10px 15px 0;
 }

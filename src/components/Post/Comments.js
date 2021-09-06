@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function ViewAllComments({ postId, count }) {
   return (
     <div>
-      <Link to={`/p/${postId}`} className={styles.viewAllComments}>
+      <Link to={`/p/${postId}/`} className={styles.viewAllComments}>
         View all {count} comments
       </Link>
     </div>

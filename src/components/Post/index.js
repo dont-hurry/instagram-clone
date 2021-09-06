@@ -45,7 +45,7 @@ export default function Post({ post }) {
       <PostImage imagePath={imagePath} />
 
       <div className={styles.bodyWrapper}>
-        <Actions uid={uid} likes={likes} />
+        <Actions uid={uid} likes={likes} postId={postId} />
         <LikeCount count={likes.length} />
         <Caption username={username} caption={caption} />
         <Comments
