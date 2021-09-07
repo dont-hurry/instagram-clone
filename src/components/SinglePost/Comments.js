@@ -1,9 +1,13 @@
+import { forwardRef } from "react";
 import styles from "./Comments.module.css";
 import ListItem from "./ListItem";
 
-export default function Comments({ username, caption, comments }) {
+export default forwardRef(function Comments(
+  { username, caption, comments },
+  ref
+) {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={ref}>
       <ListItem username={username} content={caption} />
       {comments.map((comment, index) => (
         <ListItem
@@ -14,4 +18,4 @@ export default function Comments({ username, caption, comments }) {
       ))}
     </div>
   );
-}
+});

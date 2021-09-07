@@ -1,3 +1,32 @@
 .container {
   border: 1px solid rgb(240, 240, 240);
+  padding: 10px 15px;
+}
+
+.formWrapper {
+  align-items: center;
+  display: flex;
+  height: 40px;
+}
+
+.formWrapper input {
+  background: transparent;
+  border: 0;
+  color: rgb(40, 40, 40);
+  flex-grow: 1;
+  font-size: 14px;
+  outline: none;
+}
+
+.postButton {
+  background: transparent;
+  border: 0;
+  color: rgb(0, 150, 245);
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.3;
+}
+
+.postButtonActive {
+  opacity: 1;
 }

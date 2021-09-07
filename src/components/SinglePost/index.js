@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useRef, useContext, useEffect, useState } from "react";
 import UserContext from "../../context/user";
 import { getPostByPostId } from "../../services/firebase";
 import NavigationLayout from "../layout/navigation";
@@ -11,6 +11,8 @@ import TimeFromNow from "./TimeFromNow";
 import AddComment from "./AddComment";
 
 export default function SinglePost() {
+  const commentsContainerRef = useRef();
+
   const {
     uid,
     userInfo: { username },
@@ -23,12 +25,24 @@ export default function SinglePost() {
   const [post, setPost] = useState();
   const postId = window.location.pathname.split("/p/")[1].replace("/", "");
 
+  const [comments, setComments] = useState([]);
+
   useEffect(() => {
     (async () => {
       const returnedPost = await getPostByPostId(postId);
       setPost(returnedPost);
+      setComments(returnedPost.comments);
     })();
   }, [postId]);
+
+  const addToComments = ({ username, comment }) => {
+    setComments((prevState) => prevState.concat({ username, comment }));
+  };
+
+  const scrollCommentsContainerToBottom = () => {
+    const container = commentsContainerRef.current;
+    container.scrollTo(0, container.scrollHeight);
+  };
 
   return (
     <NavigationLayout username={username}>
@@ -44,9 +58,10 @@ export default function SinglePost() {
             <div className={styles.textContainer}>
               <AuthorContainer username={username} />
               <Comments
+                ref={commentsContainerRef}
                 username={username}
                 caption={post.caption}
-                comments={post.comments}
+                comments={comments}
               />
 
               <div className={styles.actionsAndInfoContainer}>
@@ -54,7 +69,14 @@ export default function SinglePost() {
                 <LikeCount count={post.likes.length} />
                 <TimeFromNow dateCreated={post.dateCreated} />
               </div>
-              <AddComment />
+              <AddComment
+                postId={postId}
+                username={username}
+                addToComments={addToComments}
+                scrollCommentsContainerToBottom={
+                  scrollCommentsContainerToBottom
+                }
+              />
             </div>
           </div>
         </div>
