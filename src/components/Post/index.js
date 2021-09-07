@@ -20,10 +20,10 @@ function PostImage({ imagePath }) {
 }
 
 export default function Post({ post }) {
-  const { postId, uid, imagePath, likes, caption, comments, dateCreated } =
-    post;
+  const { postId, uid, imagePath, caption, comments, dateCreated } = post;
 
   const [username, setUsername] = useState("");
+  const [likes, setLikes] = useState(post.likes);
   // To make newly added comments always visible
   const [newComments, setNewComments] = useState([]);
 
@@ -45,7 +45,7 @@ export default function Post({ post }) {
       <PostImage imagePath={imagePath} />
 
       <div className={styles.bodyWrapper}>
-        <Actions uid={uid} likes={likes} postId={postId} />
+        <Actions uid={uid} likes={likes} postId={postId} setLikes={setLikes} />
         <LikeCount count={likes.length} />
         <Caption username={username} caption={caption} />
         <Comments

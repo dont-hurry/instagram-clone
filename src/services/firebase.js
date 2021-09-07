@@ -5,6 +5,7 @@ import {
 } from "firebase/auth";
 import {
   addDoc,
+  arrayRemove,
   arrayUnion,
   collection,
   doc,
@@ -106,4 +107,20 @@ export async function getPostByPostId(postId) {
   const postRef = doc(db, "posts", postId);
   const snapshot = await getDoc(postRef);
   return snapshot.data();
+}
+
+export async function likePost(uid, postId) {
+  const postRef = doc(db, "posts", postId);
+
+  return updateDoc(postRef, {
+    likes: arrayUnion(uid),
+  });
+}
+
+export async function unlikePost(uid, postId) {
+  const postRef = doc(db, "posts", postId);
+
+  return updateDoc(postRef, {
+    likes: arrayRemove(uid),
+  });
 }

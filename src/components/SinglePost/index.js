@@ -26,12 +26,14 @@ export default function SinglePost() {
   const postId = window.location.pathname.split("/p/")[1].replace("/", "");
 
   const [comments, setComments] = useState([]);
+  const [likes, setLikes] = useState([]);
 
   useEffect(() => {
     (async () => {
       const returnedPost = await getPostByPostId(postId);
       setPost(returnedPost);
       setComments(returnedPost.comments);
+      setLikes(returnedPost.likes);
     })();
   }, [postId]);
 
@@ -65,8 +67,13 @@ export default function SinglePost() {
               />
 
               <div className={styles.actionsAndInfoContainer}>
-                <Actions uid={uid} likes={post.likes} />
-                <LikeCount count={post.likes.length} />
+                <Actions
+                  uid={uid}
+                  likes={likes}
+                  postId={postId}
+                  setLikes={setLikes}
+                />
+                <LikeCount count={likes.length} />
                 <TimeFromNow dateCreated={post.dateCreated} />
               </div>
               <AddComment
