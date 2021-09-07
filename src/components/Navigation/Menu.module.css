@@ -1,5 +1,4 @@
 .menu {
-  background: #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* xOffset, yOffset, blur, spread */
   position: absolute;
@@ -15,15 +14,36 @@
   margin: 0;
 }
 
+.triangle {
+  background: #fff;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* xOffset, yOffset, blur, spread */
+  height: 20px;
+  position: absolute;
+  right: 15px;
+  top: 0;
+  transform: rotate(45deg);
+  width: 20px;
+}
+
 .menuItem {
   align-items: center;
+  background: #fff;
   color: rgb(40, 40, 40);
   cursor: pointer;
   display: flex;
   font-size: 14px;
   height: 40px;
   padding: 10px 15px;
+  position: relative;
   text-decoration: none;
+}
+
+.menuItem:first-of-type {
+  border-radius: 5px 5px 0 0;
+}
+
+.menuItem:last-of-type {
+  border-radius: 0 0 5px 5px;
 }
 
 .menuItem:hover {

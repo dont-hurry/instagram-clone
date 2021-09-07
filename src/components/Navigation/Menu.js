@@ -9,6 +9,7 @@ import { handleSignOut } from "../../services/firebase";
 export default function Menu({ username }) {
   return (
     <div className={styles.menu}>
+      <div className={styles.triangle}></div>
       <Link to={ROUTES.PROFILE(username)} className={styles.menuItem}>
         <ProfileIcon />
         Profile
