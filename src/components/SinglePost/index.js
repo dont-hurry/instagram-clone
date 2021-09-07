@@ -12,6 +12,7 @@ import AddComment from "./AddComment";
 
 export default function SinglePost() {
   const commentsContainerRef = useRef();
+  const addCommentInputRef = useRef();
 
   const {
     uid,
@@ -53,6 +54,10 @@ export default function SinglePost() {
     }
   };
 
+  const focusAddCommentInput = () => {
+    addCommentInputRef.current.focus();
+  };
+
   return (
     <NavigationLayout username={username}>
       {post && (
@@ -82,11 +87,13 @@ export default function SinglePost() {
                   likes={likes}
                   postId={postId}
                   setLikes={setLikes}
+                  focusAddCommentInput={focusAddCommentInput}
                 />
                 <LikeCount count={likes.length} />
                 <TimeFromNow dateCreated={post.dateCreated} />
               </div>
               <AddComment
+                ref={addCommentInputRef}
                 postId={postId}
                 username={username}
                 addToComments={addToComments}

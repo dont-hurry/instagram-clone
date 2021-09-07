@@ -1,13 +1,11 @@
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { addComment } from "../../services/firebase";
 import styles from "./AddComment.module.css";
 
-export default function AddComment({
-  postId,
-  username,
-  addToComments,
-  scrollCommentsContainerToBottom,
-}) {
+export default forwardRef(function AddComment(
+  { postId, username, addToComments, scrollCommentsContainerToBottom },
+  ref
+) {
   const [comment, setComment] = useState("");
 
   const handleSubmit = async (event) => {
@@ -28,6 +26,7 @@ export default function AddComment({
     <div className={styles.container}>
       <form className={styles.formWrapper} onSubmit={handleSubmit}>
         <input
+          ref={ref}
           placeholder="Add a comment..."
           value={comment}
           onChange={(event) => setComment(event.target.value)}
@@ -36,4 +35,4 @@ export default function AddComment({
       </form>
     </div>
   );
-}
+});

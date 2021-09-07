@@ -5,7 +5,13 @@ import UnlikeIcon from "../../components/icons/Unlike";
 import CommentIcon from "../icons/Comment";
 import SaveIcon from "../icons/Save";
 
-export default function Actions({ uid, likes, postId, setLikes }) {
+export default function Actions({
+  uid,
+  likes,
+  postId,
+  setLikes,
+  focusAddCommentInput,
+}) {
   const doesUserLike = likes.includes(uid);
 
   const handleLike = () => {
@@ -23,7 +29,7 @@ export default function Actions({ uid, likes, postId, setLikes }) {
       <div className={styles.left}>
         {!doesUserLike && <LikeIcon onClick={handleLike} />}
         {doesUserLike && <UnlikeIcon onClick={handleUnlike} />}
-        <CommentIcon />
+        <CommentIcon onClick={focusAddCommentInput} />
       </div>
 
       <div className={styles.right}>
