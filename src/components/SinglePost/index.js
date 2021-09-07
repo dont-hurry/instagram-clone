@@ -58,12 +58,14 @@ export default function SinglePost() {
       {post && (
         <div className={styles.outerContainer}>
           <div className={styles.innerContainer}>
-            <img
-              src={`/images/posts/${post.imagePath}`}
-              alt=""
-              className={styles.image}
-              onDoubleClick={handleLike}
-            />
+            <div className={styles.imageWrapper}>
+              <img
+                src={`/images/posts/${post.imagePath}`}
+                alt=""
+                className={styles.image}
+                onDoubleClick={handleLike}
+              />
+            </div>
 
             <div className={styles.textContainer}>
               <AuthorContainer username={username} />

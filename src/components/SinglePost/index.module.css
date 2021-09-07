@@ -11,6 +11,12 @@
   grid-template-columns: 600px 333px; /* 335 - 2 (border) */
 }
 
+.imageWrapper {
+  background: rgb(240, 240, 240);
+  display: grid;
+  place-items: center;
+}
+
 .image {
   max-height: 600px;
   object-fit: cover;
