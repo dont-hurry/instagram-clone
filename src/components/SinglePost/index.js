@@ -1,6 +1,6 @@
 import { useRef, useContext, useEffect, useState } from "react";
 import UserContext from "../../context/user";
-import { getPostByPostId } from "../../services/firebase";
+import { getPostByPostId, likePost } from "../../services/firebase";
 import NavigationLayout from "../layout/navigation";
 import styles from "./index.module.css";
 import AuthorContainer from "./AuthorContainer";
@@ -46,6 +46,13 @@ export default function SinglePost() {
     container.scrollTo(0, container.scrollHeight);
   };
 
+  const handleLike = () => {
+    if (!likes.includes(uid)) {
+      likePost(uid, postId);
+      setLikes((prevState) => prevState.concat(uid));
+    }
+  };
+
   return (
     <NavigationLayout username={username}>
       {post && (
@@ -55,6 +62,7 @@ export default function SinglePost() {
               src={`/images/posts/${post.imagePath}`}
               alt=""
               className={styles.image}
+              onDoubleClick={handleLike}
             />
 
             <div className={styles.textContainer}>

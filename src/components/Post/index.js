@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getUserInfoByUid } from "../../services/firebase";
+import { getUserInfoByUid, likePost } from "../../services/firebase";
 import styles from "./index.module.css";
 import Header from "./Header";
 import Actions from "./Actions";
@@ -9,12 +9,13 @@ import Comments from "./Comments";
 import TimeFromNow from "./TimeFromNow";
 import AddComment from "./AddComment";
 
-function PostImage({ imagePath }) {
+function PostImage({ imagePath, handleLike }) {
   return (
     <img
       src={`/images/posts/${imagePath}`}
       alt=""
       className={styles.postImage}
+      onDoubleClick={handleLike}
     />
   );
 }
@@ -38,11 +39,18 @@ export default function Post({ post }) {
     })();
   }, [uid]);
 
+  const handleLike = () => {
+    if (!likes.includes(uid)) {
+      likePost(uid, postId);
+      setLikes((prevState) => prevState.concat(uid));
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Header username={username} />
 
-      <PostImage imagePath={imagePath} />
+      <PostImage imagePath={imagePath} handleLike={handleLike} />
 
       <div className={styles.bodyWrapper}>
         <Actions uid={uid} likes={likes} postId={postId} setLikes={setLikes} />
