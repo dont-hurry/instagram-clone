@@ -8,10 +8,12 @@ import Avatar from "../UI/Avatar";
 import SuggestedUser from "./SuggestedUser";
 
 export default function Sidebar() {
-  const {
-    uid,
-    userInfo: { username, following },
-  } = useContext(UserContext);
+  const userContext = useContext(UserContext);
+  const { uid } = userContext;
+  const username = userContext.userInfo ? userContext.userInfo.username : null;
+  const following = userContext.userInfo
+    ? userContext.userInfo.following
+    : null;
 
   const containerRef = useRef();
 

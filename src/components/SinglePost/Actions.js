@@ -1,3 +1,5 @@
+import { useHistory } from "react-router";
+import * as ROUTES from "../../constants/routes";
 import { likePost, unlikePost } from "../../services/firebase";
 import styles from "./Actions.module.css";
 import LikeIcon from "../../components/icons/Like";
@@ -12,9 +14,16 @@ export default function Actions({
   setLikes,
   focusAddCommentInput,
 }) {
+  const history = useHistory();
+
   const doesUserLike = likes.includes(uid);
 
   const handleLike = () => {
+    if (!uid) {
+      history.push(ROUTES.LOG_IN);
+      return;
+    }
+
     likePost(uid, postId);
     setLikes((prevState) => prevState.concat(uid));
   };

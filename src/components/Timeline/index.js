@@ -5,10 +5,11 @@ import styles from "./index.module.css";
 import Post from "../Post";
 
 export default function Timeline() {
-  const {
-    uid,
-    userInfo: { following },
-  } = useContext(UserContext);
+  const userContext = useContext(UserContext);
+  const { uid } = userContext;
+  const following = userContext.userInfo
+    ? userContext.userInfo.following
+    : null;
 
   const [posts, setPosts] = useState([]);
 

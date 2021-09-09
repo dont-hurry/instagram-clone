@@ -3,12 +3,12 @@ import styles from "./Comments.module.css";
 import ListItem from "./ListItem";
 
 export default forwardRef(function Comments(
-  { username, caption, comments },
+  { postUsername, caption, comments },
   ref
 ) {
   return (
     <div className={styles.container} ref={ref}>
-      <ListItem username={username} content={caption} />
+      <ListItem username={postUsername} content={caption} />
       {comments.map((comment, index) => (
         <ListItem
           key={index}
