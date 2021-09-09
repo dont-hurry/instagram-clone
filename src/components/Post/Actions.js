@@ -4,6 +4,7 @@ import LikeIcon from "../../components/icons/Like";
 import UnlikeIcon from "../../components/icons/Unlike";
 import CommentIcon from "../icons/Comment";
 import { Link } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
 import SaveIcon from "../icons/Save";
 
 export default function Actions({ uid, likes, postId, setLikes }) {
@@ -24,7 +25,7 @@ export default function Actions({ uid, likes, postId, setLikes }) {
       <div className={styles.left}>
         {!doesUserLike && <LikeIcon onClick={handleLike} />}
         {doesUserLike && <UnlikeIcon onClick={handleUnlike} />}
-        <Link to={`/p/${postId}/`}>
+        <Link to={ROUTES.POST(postId)}>
           <CommentIcon />
         </Link>
       </div>

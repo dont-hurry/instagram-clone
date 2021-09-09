@@ -1,10 +1,11 @@
 import styles from "./Comments.module.css";
 import { Link } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
 
 function ViewAllComments({ postId, count }) {
   return (
     <div>
-      <Link to={`/p/${postId}/`} className={styles.viewAllComments}>
+      <Link to={ROUTES.POST(postId)} className={styles.viewAllComments}>
         View all {count} comments
       </Link>
     </div>

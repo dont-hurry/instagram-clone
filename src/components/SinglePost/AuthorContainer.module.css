@@ -16,4 +16,9 @@
   color: rgb(40, 40, 40);
   font-size: 14px;
   font-weight: 600;
+  text-decoration: none;
+}
+
+.username:hover {
+  text-decoration: underline;
 }
