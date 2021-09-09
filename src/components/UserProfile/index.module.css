@@ -1,0 +1,67 @@
+.container {
+  /* background: pink; */
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: 85px;
+  width: 935px;
+}
+
+.upperContainer {
+  /* background: green; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatarColumn {
+  width: 290px;
+}
+
+.avatarWrapper {
+  background: #fff;
+  border: 2px solid rgb(220, 220, 220);
+  border-radius: 50%;
+  display: grid;
+  height: 165px;
+  margin: 0 auto;
+  place-items: center;
+  position: relative;
+  top: -7.5px;
+  width: 165px;
+}
+
+.avatarColumn img {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.userInfoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 615px;
+}
+
+.username {
+  color: rgb(40, 40, 40);
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.userStatisticsContainer {
+  color: rgb(40, 40, 40);
+  display: flex;
+  font-size: 16px;
+  gap: 40px;
+}
+
+.userStatisticsNumber {
+  font-weight: 600;
+}
+
+.fullName {
+  color: rgb(40, 40, 40);
+  font-size: 16px;
+  font-weight: 600;
+}

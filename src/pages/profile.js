@@ -4,6 +4,7 @@ import { getUserInfoByUsername } from "../services/firebase";
 import NavigationLayout from "../components/layout/navigation";
 import Loading from "../components/icons/Loading";
 import NotFound from "../components/NotFound";
+import UserProfile from "../components/UserProfile";
 
 export default function Profile() {
   const { username } = useParams();
@@ -40,12 +41,8 @@ export default function Profile() {
   }
 
   return (
-    <div>
-      <div>
-        <div>Avatar</div>
-        <div>{JSON.stringify(userInfo)}</div>
-      </div>
-      <div>Posts</div>
-    </div>
+    <NavigationLayout>
+      <UserProfile userInfo={userInfo} />
+    </NavigationLayout>
   );
 }

@@ -6,3 +6,4 @@ export const USER_PROFILE = "/:username";
 
 export const PROFILE = (username) => `/${username}/`;
 export const SAVED = (username) => `/${username}/saved/`;
+export const POST = (postId) => `/p/${postId}/`;

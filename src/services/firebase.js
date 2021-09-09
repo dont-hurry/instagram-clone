@@ -134,3 +134,12 @@ export async function unlikePost(uid, postId) {
     likes: arrayRemove(uid),
   });
 }
+
+export async function getPostsByUid(uid) {
+  const q = query(collection(db, "posts"), where("uid", "==", uid));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((doc) => {
+    const postId = doc.id;
+    return { postId, ...doc.data() };
+  });
+}

@@ -1,0 +1,59 @@
+.container {
+  display: grid;
+  gap: 27.5px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 45px 0 60px;
+}
+
+.noPostYet {
+  color: rgb(40, 40, 40);
+  font-size: 28px;
+  font-weight: 300;
+  grid-column: 1 / span 3;
+  padding-top: 60px;
+  text-align: center;
+}
+
+.post {
+  aspect-ratio: 1;
+  background: cyan;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.postOverlay {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  display: flex;
+  font-weight: 600;
+  gap: 30px;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.postOverlay:hover {
+  opacity: 1;
+}
+
+.iconWrapper {
+  display: flex;
+  gap: 2.5px;
+}
+
+.iconWrapper svg{
+  height: 20px;
+  width: 20px;
+}
+
+.post img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
