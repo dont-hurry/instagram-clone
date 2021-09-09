@@ -12,23 +12,36 @@ export default function Navigation({ isNavMenuActive, username }) {
           <img src="/images/logo-nav.png" alt="" className={styles.logo} />
         </Link>
 
-        <div className={styles.buttonsContainer}>
-          <Link to="/">
-            <HomeIcon filled={!isNavMenuActive} />
-          </Link>
-          <div
-            className={styles.avatarWrapper}
-            data-active={isNavMenuActive} // For CSS
-            data-toggle-nav-menu="true" // For event delegation (in feed page)
-          >
-            <Avatar
-              username={username}
-              className={styles.avatar}
+        {username && (
+          <div className={styles.loggedInButtonsContainer}>
+            <Link to="/">
+              <HomeIcon filled={!isNavMenuActive} />
+            </Link>
+            <div
+              className={styles.avatarWrapper}
+              data-active={isNavMenuActive} // For CSS
               data-toggle-nav-menu="true" // For event delegation (in feed page)
-            />
+            >
+              <Avatar
+                username={username}
+                className={styles.avatar}
+                data-toggle-nav-menu="true" // For event delegation (in feed page)
+              />
+            </div>
+            {isNavMenuActive && <Menu username={username} />}
           </div>
-          {isNavMenuActive && <Menu username={username} />}
-        </div>
+        )}
+
+        {!username && (
+          <div className={styles.anonymousButtonsContainer}>
+            <Link to="/" className={styles.loginButton}>
+              登入
+            </Link>
+            <Link to="/" className={styles.signUpButton}>
+              註冊
+            </Link>
+          </div>
+        )}
       </div>
     </nav>
   );

@@ -4,7 +4,7 @@ import SinglePost from "../components/SinglePost";
 export default function SinglePostPage() {
   return (
     <NavigationLayout>
-      <SinglePost />
+      {/* <SinglePost /> */}
     </NavigationLayout>
   );
 }

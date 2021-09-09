@@ -18,7 +18,10 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      if (!uid) return;
+      if (!uid) {
+        setUserInfo(null); // In case of logging out
+        return;
+      }
 
       const returnedUserInfo = await getUserInfoByUid(uid);
       setUserInfo(returnedUserInfo);

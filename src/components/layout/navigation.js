@@ -3,9 +3,8 @@ import UserContext from "../../context/user";
 import Navigation from "../Navigation";
 
 export default function NavigationLayout({ children }) {
-  const {
-    userInfo: { username },
-  } = useContext(UserContext);
+  const userContext = useContext(UserContext);
+  const username = userContext.userInfo ? userContext.userInfo.username : null;
 
   const [isNavMenuActive, setIsNavMenuActive] = useState(false);
 

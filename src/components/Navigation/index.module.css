@@ -22,11 +22,11 @@
   top: 5px;
 }
 
-.buttonsContainer {
+.loggedInButtonsContainer {
   align-items: center;
   display: flex;
   gap: 25px;
-  position: relative; /* For menu */
+  position: relative; /* For dropdown menu */
 }
 
 .avatarWrapper {
@@ -48,4 +48,27 @@
   border-radius: 50%;
   height: 22px;
   width: 22px;
+}
+
+.anonymousButtonsContainer {
+  display: flex;
+  gap: 5px;
+}
+
+.loginButton,
+.signUpButton {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7.5px 10px;
+  text-decoration: none;
+}
+
+.loginButton {
+  background: rgb(0, 150, 245);
+  border-radius: 5px;
+  color: #fff;
+}
+
+.signUpButton {
+  color: rgb(0, 150, 245);
 }
