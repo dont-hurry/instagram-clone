@@ -1,0 +1,21 @@
+.container {
+  padding-top: 95px;
+  text-align: center;
+}
+
+.container h2 {
+  color: rgb(40, 40, 40);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.textWrapper {
+  color: rgb(40, 40, 40);
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+.textWrapper a {
+  text-decoration: none;
+  color: rgb(0, 55, 105);
+}

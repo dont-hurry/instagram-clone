@@ -10,6 +10,7 @@ import * as ROUTES from "./constants/routes";
 import * as AUTH_STATUS from "./constants/auth-status";
 import LogInPage from "./pages/log-in";
 import SignUpPage from "./pages/sign-up";
+import ProfilePage from "./pages/profile";
 
 export default function App() {
   const { status, uid } = useAuthStateObserver();
@@ -52,6 +53,9 @@ export default function App() {
           >
             <SignUpPage />
           </RedirectRoute>
+          <Route path={ROUTES.USER_PROFILE}>
+            <ProfilePage />
+          </Route>
         </Switch>
       </Router>
     </UserContext.Provider>

@@ -60,6 +60,16 @@ export async function getUserInfoByUid(uid) {
   return querySnapshot.docs[0].data();
 }
 
+export async function getUserInfoByUsername(username) {
+  const q = query(collection(db, "users"), where("username", "==", username));
+  const querySnapshot = await getDocs(q);
+
+  if (querySnapshot.docs.length === 0) {
+    return null;
+  }
+  return querySnapshot.docs[0].data();
+}
+
 export async function getSuggestedUsers(uid, following, limitNum = 5) {
   let q;
 
