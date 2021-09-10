@@ -5,7 +5,7 @@ import UnlikeIcon from "../../components/icons/Unlike";
 import CommentIcon from "../icons/Comment";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-import SaveIcon from "../icons/Save";
+// import SaveIcon from "../icons/Save";
 
 export default function Actions({ uid, likes, postId, setLikes }) {
   const doesUserLike = likes.includes(uid);
@@ -30,9 +30,7 @@ export default function Actions({ uid, likes, postId, setLikes }) {
         </Link>
       </div>
 
-      <div className={styles.right}>
-        <SaveIcon />
-      </div>
+      <div className={styles.right}>{/* <SaveIcon /> */}</div>
     </div>
   );
 }

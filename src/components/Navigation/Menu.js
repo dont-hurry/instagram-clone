@@ -2,8 +2,8 @@ import styles from "./Menu.module.css";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import ProfileIcon from "../icons/Profile";
-import SavedIcon from "../icons/Saved";
-import SettingsIcon from "../icons/Settings";
+// import SavedIcon from "../icons/Saved";
+// import SettingsIcon from "../icons/Settings";
 import { handleSignOut } from "../../services/firebase";
 
 export default function Menu({ username }) {
@@ -14,14 +14,14 @@ export default function Menu({ username }) {
         <ProfileIcon />
         Profile
       </Link>
-      <Link to={ROUTES.SAVED(username)} className={styles.menuItem}>
+      {/* <Link to={ROUTES.SAVED(username)} className={styles.menuItem}>
         <SavedIcon />
         Saved
-      </Link>
-      <Link to={ROUTES.SETTINGS} className={styles.menuItem}>
+      </Link> */}
+      {/* <Link to={ROUTES.SETTINGS} className={styles.menuItem}>
         <SettingsIcon />
         Settings
-      </Link>
+      </Link> */}
       <hr />
       <div
         className={styles.menuItem}
