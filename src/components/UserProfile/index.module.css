@@ -55,10 +55,15 @@
 }
 
 .userStatisticsContainer {
-  color: rgb(40, 40, 40);
   display: flex;
-  font-size: 16px;
   gap: 40px;
+}
+
+.userStatisticsContainer,
+.userStatisticsContainer a {
+  color: rgb(40, 40, 40);
+  font-size: 16px;
+  text-decoration: none;
 }
 
 .userStatisticsNumber {

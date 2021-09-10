@@ -38,12 +38,12 @@
   text-decoration: none;
 }
 
-.menuItem:first-of-type {
-  border-radius: 5px 5px 0 0;
-}
-
 .menuItem:last-of-type {
   border-radius: 0 0 5px 5px;
+}
+
+.menuItem:first-of-type {
+  border-radius: 5px 5px 0 0;
 }
 
 .menuItem:hover {
