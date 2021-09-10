@@ -1,0 +1,21 @@
+.unfollowButton,
+.followButton {
+  border: 1px solid transparent;
+  border-radius: 2.5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  height: 30px;
+  padding: 0 25px;
+}
+
+.unfollowButton {
+  background: transparent;
+  border-color: rgb(220, 220, 220);
+  color: rgb(40, 40, 40);
+}
+
+.followButton {
+  background: rgb(0, 150, 245);
+  color: #fff;
+}

@@ -43,6 +43,11 @@
   width: 615px;
 }
 
+.usernameWrapper {
+  display: flex;
+  gap: 20px;
+}
+
 .username {
   color: rgb(40, 40, 40);
   font-size: 28px;

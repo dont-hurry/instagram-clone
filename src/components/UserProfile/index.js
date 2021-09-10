@@ -3,12 +3,21 @@ import { getPostsByUid } from "../../services/firebase";
 import styles from "./index.module.css";
 import Avatar from "../UI/Avatar";
 import Posts from "./Posts";
+import FollowButton from "./FollowButton";
 
 export default function UserProfile({
-  userInfo: { uid, username, fullName, followers, following },
+  userInfo: {
+    uid,
+    username,
+    fullName,
+    followers: initialFollowers,
+    following: initialFollowing,
+  },
 }) {
   const [posts, setPosts] = useState([]);
   const [isLoadingPosts, setIsLoadingPosts] = useState(true);
+  const [followers, setFollowers] = useState(initialFollowers);
+  const [following, setFollowing] = useState(initialFollowing);
 
   useEffect(() => {
     (async () => {
@@ -34,9 +43,17 @@ export default function UserProfile({
         </div>
 
         <div className={styles.userInfoColumn}>
-          <div className={styles.username}>{username}</div>
+          <div className={styles.usernameWrapper}>
+            <div className={styles.username}>{username}</div>
+            <FollowButton
+              uid={uid}
+              username={username}
+              followers={followers}
+              setFollowers={setFollowers}
+            />
+          </div>
           <div className={styles.userStatisticsContainer}>
-            {userStatisticsData.map((data, index) => (
+            {userStatisticsData.map((data) => (
               <div key={data.text}>
                 <span className={styles.userStatisticsNumber}>
                   {data.number}

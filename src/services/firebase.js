@@ -143,3 +143,25 @@ export async function getPostsByUid(uid) {
     return { postId, ...doc.data() };
   });
 }
+
+export async function followUser(uid, profileUid) {
+  const userRef = await getUserDocRefByUid(uid);
+  await updateDoc(userRef, { following: arrayUnion(profileUid) });
+
+  const profileUserRef = await getUserDocRefByUid(profileUid);
+  await updateDoc(profileUserRef, { followers: arrayUnion(uid) });
+}
+
+export async function unfollowUser(uid, profileUid) {
+  const userRef = await getUserDocRefByUid(uid);
+  await updateDoc(userRef, { following: arrayRemove(profileUid) });
+
+  const profileUserRef = await getUserDocRefByUid(profileUid);
+  await updateDoc(profileUserRef, { followers: arrayRemove(uid) });
+}
+
+async function getUserDocRefByUid(uid) {
+  const q = query(collection(db, "users"), where("uid", "==", uid));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs[0].ref;
+}
