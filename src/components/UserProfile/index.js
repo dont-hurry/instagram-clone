@@ -6,18 +6,11 @@ import Posts from "./Posts";
 import FollowButton from "./FollowButton";
 
 export default function UserProfile({
-  userInfo: {
-    uid,
-    username,
-    fullName,
-    followers: initialFollowers,
-    following: initialFollowing,
-  },
+  userInfo: { uid, username, fullName, followers: initialFollowers, following },
 }) {
   const [posts, setPosts] = useState([]);
   const [isLoadingPosts, setIsLoadingPosts] = useState(true);
   const [followers, setFollowers] = useState(initialFollowers);
-  const [following, setFollowing] = useState(initialFollowing);
 
   useEffect(() => {
     (async () => {

@@ -52,18 +52,22 @@ export default function Sidebar() {
         <Link to={ROUTES.PROFILE(username)}>{username}</Link>
       </div>
 
-      <div>
-        <div className={styles.suggestionTitle}>Suggestions For You</div>
+      {suggestedUsers.length > 0 && (
         <div>
-          {suggestedUsers.map(({ fullName, username }) => (
-            <SuggestedUser
-              key={username}
-              fullName={fullName}
-              username={username}
-            />
-          ))}
+          <div className={styles.suggestionTitle}>Suggestions For You</div>
+          <div>
+            {suggestedUsers.map(({ fullName, username, uid: profileUid }) => (
+              <SuggestedUser
+                key={username}
+                fullName={fullName}
+                username={username}
+                uid={uid}
+                profileUid={profileUid}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

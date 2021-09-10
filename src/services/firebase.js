@@ -82,8 +82,8 @@ export async function getSuggestedUsers(uid, following, limitNum = 5) {
   const querySnapshot = await getDocs(q);
 
   return querySnapshot.docs.map((doc) => {
-    const { fullName, username } = doc.data();
-    return { fullName, username };
+    const { fullName, username, uid } = doc.data();
+    return { fullName, username, uid };
   });
 }
 

@@ -36,8 +36,17 @@
   text-decoration: underline;
 }
 
-.follow {
-  color: rgb(0, 150, 245);
+.follow,
+.unfollow {
+  cursor: pointer;
   font-size: 12px;
   font-weight: 600;
+}
+
+.follow {
+  color: rgb(0, 150, 245);
+}
+
+.unfollow {
+  color: rgb(40, 40, 40);
 }
