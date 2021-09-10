@@ -24,8 +24,12 @@ function Post({ post: { postId, imagePath, likes, comments } }) {
   );
 }
 
-export default function Posts({ posts }) {
+export default function Posts({ posts, isLoadingPosts }) {
   posts.sort((a, b) => b.dateCreated - a.dateCreated);
+
+  if (isLoadingPosts) {
+    return null;
+  }
 
   return (
     <div className={styles.container}>

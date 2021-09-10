@@ -8,11 +8,13 @@ export default function UserProfile({
   userInfo: { uid, username, fullName, followers, following },
 }) {
   const [posts, setPosts] = useState([]);
+  const [isLoadingPosts, setIsLoadingPosts] = useState(true);
 
   useEffect(() => {
     (async () => {
       const returnedPosts = await getPostsByUid(uid);
       setPosts(returnedPosts);
+      setIsLoadingPosts(false);
     })();
   }, [uid]);
 
@@ -47,7 +49,7 @@ export default function UserProfile({
         </div>
       </div>
 
-      <Posts posts={posts} />
+      <Posts posts={posts} isLoadingPosts={isLoadingPosts} />
     </div>
   );
 }
