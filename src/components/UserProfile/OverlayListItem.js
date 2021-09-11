@@ -12,7 +12,7 @@ export default function OverlayListItem({ uid }) {
       const returnedUserInfo = await getUserInfoByUid(uid);
       setUserInfo(returnedUserInfo);
     })();
-  }, []);
+  }, [uid]);
 
   if (!userInfo) {
     return null;

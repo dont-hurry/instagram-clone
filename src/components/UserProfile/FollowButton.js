@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useHistory } from "react-router";
-import UserContext from "../../context/user";
+import { UserContext } from "../../context/user";
 import { unfollowUser, followUser } from "../../services/firebase";
 import styles from "./FollowButton.module.css";
 

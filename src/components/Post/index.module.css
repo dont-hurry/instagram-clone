@@ -4,13 +4,6 @@
   font-size: 0;
 }
 
-/* For width and height, subtract border size 2px */
-.postImage {
-  max-height: 613px;
-  object-fit: cover;
-  width: 613px;
-}
-
 .bodyWrapper {
   display: flex;
   flex-direction: column;

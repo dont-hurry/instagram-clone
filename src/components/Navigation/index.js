@@ -1,10 +1,15 @@
+import { useContext } from "react";
+import { UserContext } from "../../context/user";
 import styles from "./index.module.css";
 import { Link } from "react-router-dom";
-import HomeIcon from "../icons/Home";
-import Avatar from "../UI/Avatar";
-import Menu from "./Menu";
+import LoggedInButtons from "./LoggedInButtons";
+import AnonymousButtons from "./AnonymousButtons";
 
-export default function Navigation({ isNavMenuActive, username }) {
+export default function Navigation({ isDropdownMenuActive }) {
+  const userContext = useContext(UserContext);
+
+  const hasUserLoggedIn = userContext.userInfo !== null;
+
   return (
     <nav className={styles.outerContainer}>
       <div className={styles.innerContainer}>
@@ -12,36 +17,11 @@ export default function Navigation({ isNavMenuActive, username }) {
           <img src="/images/logo-nav.png" alt="" className={styles.logo} />
         </Link>
 
-        {username && (
-          <div className={styles.loggedInButtonsContainer}>
-            <Link to="/">
-              <HomeIcon filled={!isNavMenuActive} />
-            </Link>
-            <div
-              className={styles.avatarWrapper}
-              data-active={isNavMenuActive} // For CSS
-              data-toggle-nav-menu="true" // For event delegation (in feed page)
-            >
-              <Avatar
-                username={username}
-                className={styles.avatar}
-                data-toggle-nav-menu="true" // For event delegation (in feed page)
-              />
-            </div>
-            {isNavMenuActive && <Menu username={username} />}
-          </div>
+        {hasUserLoggedIn && (
+          <LoggedInButtons isDropdownMenuActive={isDropdownMenuActive} />
         )}
 
-        {!username && (
-          <div className={styles.anonymousButtonsContainer}>
-            <Link to="/" className={styles.loginButton}>
-              登入
-            </Link>
-            <Link to="/" className={styles.signUpButton}>
-              註冊
-            </Link>
-          </div>
-        )}
+        {!hasUserLoggedIn && <AnonymousButtons />}
       </div>
     </nav>
   );

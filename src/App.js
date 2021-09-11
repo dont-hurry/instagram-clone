@@ -1,12 +1,12 @@
 import useAuthStateObserver from "./hooks/use-auth-state-observer";
 import { useState, useEffect } from "react";
 import { getUserInfoByUid } from "./services/firebase";
-import UserContext from "./context/user";
+import UserContextProvider from "./context/user";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/home";
+import * as ROUTES from "./constants/routes";
 import SinglePostPage from "./pages/single-post";
 import RedirectRoute from "./components/helpers/RedirectRoute";
-import * as ROUTES from "./constants/routes";
 import * as AUTH_STATUS from "./constants/auth-status";
 import LogInPage from "./pages/log-in";
 import SignUpPage from "./pages/sign-up";
@@ -15,22 +15,27 @@ import ProfilePage from "./pages/profile";
 export default function App() {
   const { status, uid } = useAuthStateObserver();
 
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
     (async () => {
-      if (!uid) {
-        setUserInfo(null); // In case of logging out
-        return;
+      if (uid) {
+        const returnedUserInfo = await getUserInfoByUid(uid);
+        setUserInfo(returnedUserInfo);
+      } else {
+        // Logging out
+        setUserInfo(null);
       }
-
-      const returnedUserInfo = await getUserInfoByUid(uid);
-      setUserInfo(returnedUserInfo);
     })();
   }, [uid]);
 
   return (
-    <UserContext.Provider value={{ status, uid, userInfo }}>
+    <UserContextProvider
+      status={status}
+      uid={uid}
+      userInfo={userInfo}
+      setUserInfo={setUserInfo}
+    >
       <Router>
         <Switch>
           <Route path="/" exact>
@@ -58,6 +63,6 @@ export default function App() {
           </Route>
         </Switch>
       </Router>
-    </UserContext.Provider>
+    </UserContextProvider>
   );
 }

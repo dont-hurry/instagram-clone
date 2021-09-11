@@ -1,3 +1,5 @@
+// The optional second parameter provides additional information for making
+// error message.
 export function getErrorMessageByCode(code, { email } = {}) {
   switch (code) {
     case "auth/email-already-in-use":

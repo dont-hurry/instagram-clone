@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import UserContext from "../context/user";
+import { UserContext } from "../context/user";
 import * as AUTH_STATUS from "../constants/auth-status";
 import LoadingIcon from "../components/icons/Loading";
 import FeedPage from "./feed";
@@ -17,4 +17,7 @@ export default function Home() {
   } else if (authStatus === AUTH_STATUS.NOT_LOGGED_IN) {
     return <LandingPage />;
   }
+
+  // Should not render this
+  return <div>Error: /pages/home.js</div>;
 }

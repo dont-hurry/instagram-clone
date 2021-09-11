@@ -17,13 +17,6 @@
   text-decoration: none;
 }
 
-.suggestionTitle {
-  color: rgb(140, 140, 140);
-  font-size: 14px;
-  font-weight: 600;
-  padding: 15px 0;
-}
-
 .userAvatar {
   border-radius: 50%;
   height: 55px;

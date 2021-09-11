@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  gap: 5px;
+}
+
+.loginButton,
+.signUpButton {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7.5px 10px;
+  text-decoration: none;
+}
+
+.loginButton {
+  background: rgb(0, 150, 245);
+  border-radius: 5px;
+  color: #fff;
+}
+
+.signUpButton {
+  color: rgb(0, 150, 245);
+}

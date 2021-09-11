@@ -1,20 +1,25 @@
 import { useState } from "react";
 import { followUser, unfollowUser } from "../../services/firebase";
-import { Link } from "react-router-dom";
+import styles from "./SuggestedUsersItem.module.css";
 import Avatar from "../UI/Avatar";
-import styles from "./SuggestedUser.module.css";
+import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 
-export default function SuggestedUser({ fullName, username, uid, profileUid }) {
+export default function SuggestedUsersItem({
+  fullName,
+  username,
+  suggestedUserUid,
+  currentUserUid,
+}) {
   const [isFollowed, setIsFollowed] = useState(false);
 
   const handleFollow = async () => {
-    await followUser(uid, profileUid);
+    await followUser(currentUserUid, suggestedUserUid);
     setIsFollowed(true);
   };
 
   const handleUnfollow = async () => {
-    await unfollowUser(uid, profileUid);
+    await unfollowUser(currentUserUid, suggestedUserUid);
     setIsFollowed(false);
   };
 
