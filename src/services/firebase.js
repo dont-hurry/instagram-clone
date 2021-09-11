@@ -45,6 +45,8 @@ export async function handleSignUp({ email, fullName, username, password }) {
     followers: [],
     following: [],
   });
+
+  return uid;
 }
 
 export async function handleLogIn({ email, password }) {
