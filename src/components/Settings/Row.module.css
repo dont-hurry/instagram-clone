@@ -1,0 +1,10 @@
+.container {
+  column-gap: 30px;
+  display: grid;
+  grid-template-columns: 130px 355px;
+}
+
+.container > :nth-child(odd) {
+  align-self: center;
+  text-align: right;
+}

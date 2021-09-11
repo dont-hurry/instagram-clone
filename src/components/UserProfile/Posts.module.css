@@ -16,7 +16,6 @@
 
 .post {
   aspect-ratio: 1;
-  background: cyan;
   display: flex;
   position: relative;
   width: 100%;
@@ -47,7 +46,7 @@
   gap: 2.5px;
 }
 
-.iconWrapper svg{
+.iconWrapper svg {
   height: 20px;
   width: 20px;
 }

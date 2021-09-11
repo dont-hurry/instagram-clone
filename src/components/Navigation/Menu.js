@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import ProfileIcon from "../icons/Profile";
 // import SavedIcon from "../icons/Saved";
-// import SettingsIcon from "../icons/Settings";
+import SettingsIcon from "../icons/Settings";
 import { handleSignOut } from "../../services/firebase";
 
 export default function Menu({ username }) {
@@ -18,10 +18,10 @@ export default function Menu({ username }) {
         <SavedIcon />
         Saved
       </Link> */}
-      {/* <Link to={ROUTES.SETTINGS} className={styles.menuItem}>
+      <Link to={ROUTES.SETTINGS} className={styles.menuItem}>
         <SettingsIcon />
         Settings
-      </Link> */}
+      </Link>
       <hr />
       <div
         className={styles.menuItem}

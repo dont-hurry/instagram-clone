@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateEmail,
 } from "firebase/auth";
 import {
   addDoc,
@@ -164,4 +165,15 @@ async function getUserDocRefByUid(uid) {
   const q = query(collection(db, "users"), where("uid", "==", uid));
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs[0].ref;
+}
+
+export async function updateUserInfo(uid, data) {
+  const userRef = await getUserDocRefByUid(uid);
+  await updateDoc(userRef, data);
+}
+
+// Updating email requires re-authenticating the user
+// Reference: https://firebase.google.com/docs/auth/web/manage-users#re-authenticate_a_user
+export async function updateUserEmail(email) {
+  await updateEmail(auth.currentUser, email);
 }

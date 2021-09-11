@@ -1,0 +1,49 @@
+.outerContainer {
+  margin: 0 auto;
+  padding-top: 85px;
+  width: 695px;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+.username {
+  color: rgb(40, 40, 40);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.warning {
+  color: rgb(240, 75, 85);
+  font-size: 14px;
+}
+
+.formWrapper {
+  background: #fff;
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 2.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 32.5px;
+}
+
+.submitButton {
+  background: rgb(0, 150, 245);
+  border-color: transparent;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 15px;
+  padding: 5px 10px;
+}
+
+.disabledButton {
+  background: rgba(0, 150, 245, 0.3);
+  cursor: initial;
+}

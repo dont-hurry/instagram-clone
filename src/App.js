@@ -10,6 +10,7 @@ import RedirectRoute from "./components/helpers/RedirectRoute";
 import * as AUTH_STATUS from "./constants/auth-status";
 import LogInPage from "./pages/log-in";
 import SignUpPage from "./pages/sign-up";
+import SettingsPage from "./pages/settings";
 import ProfilePage from "./pages/profile";
 
 export default function App() {
@@ -57,6 +58,13 @@ export default function App() {
             to="/"
           >
             <SignUpPage />
+          </RedirectRoute>
+          <RedirectRoute
+            path={ROUTES.SETTINGS}
+            condition={status === AUTH_STATUS.NOT_LOGGED_IN}
+            to={ROUTES.LOG_IN}
+          >
+            <SettingsPage />
           </RedirectRoute>
           <Route path={ROUTES.USER_PROFILE}>
             <ProfilePage />
