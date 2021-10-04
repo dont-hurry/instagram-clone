@@ -7,6 +7,7 @@ import BorderedWrapper from "../components/UI/BorderedWrapper";
 import Input from "../components/UI/Input";
 import SubmitButton from "../components/UI/SubmitButton";
 import * as ROUTES from "../constants/routes";
+import LoginTips from "../components/LoginTips";
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -84,6 +85,8 @@ export default function LogIn() {
           </span>
         </BorderedWrapper>
       </div>
+
+      <LoginTips />
     </div>
   );
 }

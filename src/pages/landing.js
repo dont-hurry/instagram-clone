@@ -7,6 +7,7 @@ import Input from "../components/UI/Input";
 import SubmitButton from "../components/UI/SubmitButton";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
+import LoginTips from "../components/LoginTips";
 
 export default function Landing() {
   const [email, setEmail] = useState("");
@@ -99,6 +100,8 @@ export default function Landing() {
           </BorderedWrapper>
         </div>
       </div>
+
+      <LoginTips />
     </div>
   );
 }

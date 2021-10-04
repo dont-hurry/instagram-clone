@@ -1,0 +1,18 @@
+.container {
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 400px;
+}
+
+.container span {
+  color: white;
+  font-weight: 600;
+}
