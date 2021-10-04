@@ -19,6 +19,7 @@
 .warning {
   color: rgb(240, 75, 85);
   font-size: 14px;
+  line-height: 1.5;
 }
 
 .formWrapper {
